@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloom &amp; Wire — Handmade Pipe Cleaner Flowers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <meta name="description"
+        content="Handmade pipe cleaner flowers and bouquets, made stem by stem. Order directly on WhatsApp." />
+
+    <!--
+  =========================================================================
+  HOW THIS FILE IS ORGANIZED (read this first!)
+  =========================================================================
+  1. FONTS + STYLE (the <style> block) — controls colors, fonts, spacing.
+  2. BODY — the actual content of the page (text, sections, form).
+  3. SCRIPT (bottom of the file) — a CONFIG box with YOUR shop details,
+     and the list of PRODUCTS you sell. This is the ONLY place you
+     should need to type in your own information.
+
+  Anywhere you see the word EDIT in a comment like this one, that is a
+  spot meant for you to change. Everything else you can leave alone.
+  =========================================================================
+-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="BloomStyle.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap"
+        rel="stylesheet" />
+
+
+</head>
+
+<body>
+    <!-- Hidden SVG filter that gives every "wire divider" its fuzzy, chenille-stem texture -->
+    <svg width="0" height="0" style="position: absolute">
+        <filter id="fuzzy-filter" x="-20%" y="-200%" width="140%" height="500%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" />
+        </filter>
+    </svg>
+
+    <!-- ============================= NAV ============================= -->
+    <header>
+        <nav class="nav">
+            <a href="#top" class="logo">
+                <img src="images/MainLogo.png" alt="" style="height: 45px; width: 45px; border-radius: 50%" />
+                <span id="nav-shop-name">Wistful &amp; Bkoom</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+                &#9776;
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#how">How to Order</a></li>
+                <li><a href="#order">Order Form</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <!-- <a href="#order" class="btn btn-primary btn-sm"><span class="long">Order&nbsp;</span>Now</a> -->
+                <a href="#order" class="btn btn-primary btn-sm">Order Now</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============================= HERO ============================= -->
+    <main id="top">
+        <section class="hero">
+            <div class="wrap hero-grid">
+                <div>
+                    <span class="eyebrow">100% Handmade &middot; Made to Order</span>
+                    <h1>
+                        Flowers that never wilt, twisted
+                        <span class="accent">stem by stem.</span>
+                    </h1>
+                    <p class="lead">
+                        Every petal here is hand-shaped from pipe cleaners — no glue guns,
+                        no shortcuts. Pick a single stem or a full bouquet, and it's yours
+                        in a few days, delivered with care.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#shop" class="btn btn-primary">See the Flowers</a>
+                        <a href="#order" class="btn btn-dark">Order on WhatsApp</a>
+                    </div>
+                </div>
+                <div class="hero-art" aria-hidden="true">
+                    <svg viewBox="0 0 400 400">
+                        <g stroke-linecap="round" fill="none">
+                            <path d="M200 380 C 150 320, 250 260, 200 200" stroke="#7C9473" stroke-width="7" />
+                            <circle cx="200" cy="150" r="46" fill="#E8527A" />
+                            <circle cx="200" cy="150" r="46" fill="none" stroke="#C93F65" stroke-width="4"
+                                stroke-dasharray="2 10" />
+                            <circle cx="200" cy="150" r="14" fill="#F2B705" />
+                            <path d="M120 300 C 95 260, 150 230, 130 190" stroke="#9B7EDE" stroke-width="6" />
+                            <circle cx="126" cy="170" r="30" fill="#9B7EDE" />
+                            <circle cx="126" cy="170" r="9" fill="#FBF6EC" />
+                            <path d="M280 300 C 305 260, 250 230, 270 190" stroke="#F2B705" stroke-width="6" />
+                            <circle cx="274" cy="170" r="30" fill="#F2B705" />
+                            <circle cx="274" cy="170" r="9" fill="#FBF6EC" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <div class="wire-divider" aria-hidden="true">
+            <svg viewBox="0 0 1440 44" preserveAspectRatio="none">
+                <path class="wire-path" stroke="#E8527A"
+                    d="M0,22 C 60,2 120,42 180,22 C240,2 300,42 360,22 C420,2 480,42 540,22 C600,2 660,42 720,22 C780,2 840,42 900,22 C960,2 1020,42 1080,22 C1140,2 1200,42 1260,22 C1320,2 1380,42 1440,22" />
+            </svg>
+        </div>
+
+        <!-- ============================= STORY ============================= -->
+        <section class="story" id="story">
+            <div class="wrap story-grid">
+                <div>
+                    <span class="eyebrow" style="background: rgba(242, 183, 5, 0.18); color: #f2b705">Our Story</span>
+                    <h2>A little bit of craft, a lot of heart.</h2>
+                </div>
+                <div>
+                    <p id="story-text">
+                        What started as a way to relax with a few colourful pipe cleaners
+                        turned into a small flower shop that never needs watering. Every
+                        stem, petal and bouquet you see here is twisted and shaped
+                        entirely by hand — no two are ever perfectly identical, and that's
+                        the charm of it.
+                        <em>(Owner: replace this paragraph with your own story — see the
+                            guide.)</em>
+                    </p>
+                    <div class="story-facts">
+                        <div class="fact">
+                            <div class="num">100%</div>
+                            <div class="label">Handmade</div>
+                        </div>
+                        <div class="fact">
+                            <div class="num">0</div>
+                            <div class="label">Watering Needed</div>
+                        </div>
+                        <div class="fact">
+                            <div class="num">&hearts;</div>
+                            <div class="label">Made With Love</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="wire-divider" aria-hidden="true">
+            <svg viewBox="0 0 1440 44" preserveAspectRatio="none">
+                <path class="wire-path" stroke="#F2B705"
+                    d="M0,22 C 60,2 120,42 180,22 C240,2 300,42 360,22 C420,2 480,42 540,22 C600,2 660,42 720,22 C780,2 840,42 900,22 C960,2 1020,42 1080,22 C1140,2 1200,42 1260,22 C1320,2 1380,42 1440,22" />
+            </svg>
+        </div>
+
+        <!-- ============================= SHOP ============================= -->
+        <section class="shop" id="shop">
+            <div class="wrap">
+                <div class="shop-head">
+                    <span class="eyebrow">The Shop</span>
+                    <h2>Pick your favourite bloom</h2>
+                    <p>
+                        Tap "Order on WhatsApp" under any flower to message directly, or
+                        fill in the full order form below.
+                    </p>
+                </div>
+                <div class="grid-products" id="productGrid">
+                    <!-- Product cards are generated automatically from the PRODUCTS list at the bottom of this file -->
+                </div>
+            </div>
+        </section>
+
+        <div class="wire-divider" aria-hidden="true">
+            <svg viewBox="0 0 1440 44" preserveAspectRatio="none">
+                <path class="wire-path" stroke="#9B7EDE"
+                    d="M0,22 C 60,2 120,42 180,22 C240,2 300,42 360,22 C420,2 480,42 540,22 C600,2 660,42 720,22 C780,2 840,42 900,22 C960,2 1020,42 1080,22 C1140,2 1200,42 1260,22 C1320,2 1380,42 1440,22" />
+            </svg>
+        </div>
+
+        <!-- ============================= HOW TO ORDER ============================= -->
+        <section class="how" id="how">
+            <div class="wrap">
+                <div class="shop-head">
+                    <span class="eyebrow">How To Order</span>
+                    <h2>Three simple steps</h2>
+                </div>
+                <div class="how-steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <h3>Choose your flowers</h3>
+                        <p>
+                            Browse the shop above and decide on a single stem, a bunch, or a
+                            custom bouquet.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <h3>Fill the order form</h3>
+                        <p>
+                            Add your name, contact number and delivery address in the form
+                            below.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <h3>Confirm on WhatsApp</h3>
+                        <p>
+                            Your details open in WhatsApp automatically — just hit send, and
+                            we'll confirm your order.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="wire-divider" aria-hidden="true">
+            <svg viewBox="0 0 1440 44" preserveAspectRatio="none">
+                <path class="wire-path" stroke="#7C9473"
+                    d="M0,22 C 60,2 120,42 180,22 C240,2 300,42 360,22 C420,2 480,42 540,22 C600,2 660,42 720,22 C780,2 840,42 900,22 C960,2 1020,42 1080,22 C1140,2 1200,42 1260,22 C1320,2 1380,42 1440,22" />
+            </svg>
+        </div>
+
+        <!-- ============================= ORDER FORM ============================= -->
+        <section id="order">
+            <div class="wrap order-wrap">
+                <div class="order-info">
+                    <span class="eyebrow">Place An Order</span>
+                    <h2>Tell us what you'd like</h2>
+                    <p>
+                        Fill this in and press "Send Order on WhatsApp." It opens WhatsApp
+                        with your details already typed out — nothing is stored anywhere
+                        online, it goes straight to us as a message.
+                    </p>
+                    <div class="whatsapp-note">
+                        <i class="fa-brands fa-whatsapp" style="color: green; font-weight: 700; font-size: medium"></i>
+                        Prefer to skip the form? You can message us directly on WhatsApp
+                        any time using the button in the
+                        <a href="#contact" style="color: var(--coral-dark); font-weight: 800">Contact</a>
+                        section below.
+                    </div>
+                </div>
+
+                <form class="order-form" id="orderForm">
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="e.g. Priya Sharma" />
+                        </div>
+                        <div class="field">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="you@example.com" />
+                        </div>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="10-digit number" />
+                        </div>
+                        <div class="field">
+                            <label for="whatsapp">WhatsApp Number *</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" required
+                                placeholder="Same as above, if applicable" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="address">Full Delivery Address *</label>
+                        <textarea id="address" name="address" rows="3" required
+                            placeholder="House/Flat, Street, Area, City, State, PIN code"></textarea>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="product">Which flower / bouquet? *</label>
+                            <select id="product" name="product" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <!-- Options are added automatically from the PRODUCTS list -->
+                                <option value="Custom / Other (see notes)">
+                                    Custom / Other (see notes)
+                                </option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="notes">Notes (colours, occasion, delivery date, etc.)</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Optional"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="justify-self: start">
+                        Send Order on WhatsApp
+                    </button>
+                    <div class="form-msg success" id="formMsg">
+                        Thanks! WhatsApp should have opened in a new tab with your order
+                        details — just press send there to confirm.
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- ============================= CONTACT ============================= -->
+        <section class="contact" id="contact">
+            <div class="wrap">
+                <span class="eyebrow" style="background: rgba(242, 183, 5, 0.18); color: #f2b705">Get In Touch</span>
+                <h2>Prefer to just say hello?</h2>
+                <p>
+                    Reach out any time on WhatsApp or call directly — we're happy to
+                    help you pick the perfect bouquet.
+                </p>
+                <div class="contact-buttons">
+                    <a href="#" id="waContactBtn" class="btn btn-primary" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-whatsapp"
+                            style="color: darkgreen; font-weight: 900; font-size: 25px"></i>
+                        <span>Chat on WhatsApp</span>
+                    </a>
+                    <a href="#" id="callBtn" class="btn btn-outline"><i class="fa-solid fa-phone"
+                            style="font-size: 18px"></i>
+                        <span>Call Us</span></a>
+                    <a href="https://www.facebook.com/koyel.mallick.194152" class="btn btn-outline" target="_blank"
+                        rel="noopener">
+                        <i class="fa-brands fa-facebook-f" style="color: blue; font-size: 18px"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/wistful_bloom_/" class="btn btn-outline" target="_blank"
+                        rel="noopener">
+                        <i class="fa-brands fa-instagram" style="font-size: 20px; color: #c32aa3; fill: #c32aa3"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.threads.com/@wistful_bloom_" class="btn btn-outline" target="_blank"
+                        rel="noopener">
+                        <i class="fa-brands fa-threads" style="font-size: 20px; color: #fff"></i>
+                        <span>Threads</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div id="footerShopName">Wistful &amp; Bloom</div>
+        <p>
+            Made with love, one pipe cleaner at a time. &middot;
+            <a href="#top">Back to top</a>
+        </p>
+    </footer>
+    <script src="BloomScript.js"></script>
+
+
+</body>
+
+</html>
