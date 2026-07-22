@@ -730,6 +730,7 @@ footer a {
 .btn-primary {
     background: #ff77a8;
     color: white;
+    padding: 7px 12px;
 }
 
 .btn-primary:hover {
@@ -737,7 +738,12 @@ footer a {
 }
 
 .btn-dark {
-    background: #2d2d2d;
+    background: #15fd3453;
+    color: white;
+}
+
+.btn-dark:hover {
+    background: #097c18d6;
     color: white;
 }
 
