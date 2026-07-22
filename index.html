@@ -9,29 +9,12 @@
     <meta name="description"
         content="Handmade pipe cleaner flowers and bouquets, made stem by stem. Order directly on WhatsApp." />
 
-    <!--
-  =========================================================================
-  HOW THIS FILE IS ORGANIZED (read this first!)
-  =========================================================================
-  1. FONTS + STYLE (the <style> block) — controls colors, fonts, spacing.
-  2. BODY — the actual content of the page (text, sections, form).
-  3. SCRIPT (bottom of the file) — a CONFIG box with YOUR shop details,
-     and the list of PRODUCTS you sell. This is the ONLY place you
-     should need to type in your own information.
-
-  Anywhere you see the word EDIT in a comment like this one, that is a
-  spot meant for you to change. Everything else you can leave alone.
-  =========================================================================
--->
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="BloomStyle.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap"
         rel="stylesheet" />
-
-
 </head>
 
 <body>
@@ -48,11 +31,20 @@
         <nav class="nav">
             <a href="#top" class="logo">
                 <img src="images/MainLogo.png" alt="" style="height: 45px; width: 45px; border-radius: 50%" />
-                <span id="nav-shop-name">Wistful &amp; Bkoom</span>
+                <span id="nav-shop-name">Wistful &amp; Bloom</span>
             </a>
-            <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
-                &#9776;
-            </button>
+            
+            <div class="nav-actions-wrapper" style="display: flex; align-items: center; gap: 15px;">
+                <!-- Theme Toggle Button -->
+                <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme" style="background: none; border: none; font-size: 1.3rem; cursor: pointer; color: white;">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+                    &#9776;
+                </button>
+            </div>
+
             <ul class="nav-links" id="navLinks">
                 <li><a href="#shop">Shop</a></li>
                 <li><a href="#story">Our Story</a></li>
@@ -61,7 +53,6 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-cta">
-                <!-- <a href="#order" class="btn btn-primary btn-sm"><span class="long">Order&nbsp;</span>Now</a> -->
                 <a href="#order" class="btn btn-primary btn-sm" style="padding: 9px 17px;">Order Now</a>
             </div>
         </nav>
@@ -122,11 +113,11 @@
                     <h2>A little bit of craft, a lot of heart.</h2>
                 </div>
                 <div>
-                    <p id="story-text">
+                    <p id="story-text" class="story-text">
                         What started as a way to relax with a few colourful pipe cleaners
                         turned into a small flower shop that never needs watering. Every
                         stem, petal and bouquet you see here is twisted and shaped
-                        entirely by hand - no two are ever perfectly identical, and that's
+                        entireby hand - no two are ever perfectly identical, and that's
                         the charm of it.
                         <em></em>
                     </p>
@@ -167,7 +158,6 @@
                     </p>
                 </div>
                 <div class="grid-products" id="productGrid">
-                    <!-- Product cards are generated automatically from the PRODUCTS list at the bottom of this file -->
                 </div>
             </div>
         </section>
@@ -240,6 +230,21 @@
                         <a href="#contact" style="color: var(--coral-dark); font-weight: 800">Contact</a>
                         section below.
                     </div>
+
+                    <!-- Dynamic Seller Info Box -->
+                    <div class="seller-info-box">
+                        <h3><i class="fa-solid fa-store" style="color: var(--sun);"></i> Seller Details</h3>
+                        <ul class="seller-details-list">
+                            <li>
+                                <i class="fa-solid fa-phone"></i>
+                                <span><strong>Phone:</strong> <span id="seller-phone"></span></span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span><strong>Address:</strong> <span id="seller-address"></span></span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                 <form class="order-form" id="orderForm">
@@ -277,7 +282,6 @@
                             <label for="product">Which flower / bouquet? *</label>
                             <select id="product" name="product" required>
                                 <option value="" disabled selected>Select an option</option>
-                                <!-- Options are added automatically from the PRODUCTS list -->
                                 <option value="Custom / Other (see notes)">
                                     Custom / Other (see notes)
                                 </option>
@@ -319,25 +323,25 @@
                     <a href="#" id="waContactBtn" class="btn btn-primary" target="_blank" rel="noopener">
                         <i class="fa-brands fa-whatsapp"
                             style="color: darkgreen; font-weight: 900; font-size: 25px"></i>
-                        <span>Chat on WhatsApp</span>
+                        <span class="btn-text">Chat on WhatsApp</span>
                     </a>
                     <a href="#" id="callBtn" class="btn btn-outline"><i class="fa-solid fa-phone"
                             style="font-size: 18px"></i>
-                        <span>Call Us</span></a>
+                        <span class="btn-text">Call Us</span></a>
                     <a href="https://www.facebook.com/koyel.mallick.194152" class="btn btn-outline" target="_blank"
                         rel="noopener">
-                        <i class="fa-brands fa-facebook-f" style="color: blue; font-size: 18px"></i>
-                        <span>Facebook</span>
+                        <i class="fa-brands fa-facebook-f" style="color: rgb(4, 0, 255); font-size: 18px"></i>
+                        <span class="btn-text">Facebook</span>
                     </a>
                     <a href="https://www.instagram.com/wistful_bloom_/" class="btn btn-outline" target="_blank"
                         rel="noopener">
-                        <i class="fa-brands fa-instagram" style="font-size: 20px; color: #c32aa3; fill: #c32aa3"></i>
-                        <span>Instagram</span>
+                        <i class="fa-brands fa-instagram" style="font-size: 20px; color: #c429a2; fill: #c32aa3"></i>
+                        <span class="btn-text">Instagram</span>
                     </a>
                     <a href="https://www.threads.com/@wistful_bloom_" class="btn btn-outline" target="_blank"
                         rel="noopener">
                         <i class="fa-brands fa-threads" style="font-size: 20px; color: #fff"></i>
-                        <span>Threads</span>
+                        <span class="btn-text">Threads</span>
                     </a>
                 </div>
             </div>
@@ -352,8 +356,6 @@
         </p>
     </footer>
     <script src="BloomScript.js"></script>
-
-
 </body>
 
 </html>

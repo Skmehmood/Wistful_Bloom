@@ -10,6 +10,7 @@ const CONFIG = {
     shopName: "Wistful & Bloom", // EDIT: your shop name, shown in the header and footer
     ownerWhatsApp: "8621878167", // EDIT: your WhatsApp number — country code + number, digits only, no + no spaces (e.g. India = 91XXXXXXXXXX)
     ownerPhoneDisplay: "+91 8621878767", // EDIT: your phone number as customers should see/dial it
+    ownerAddress: "Kolkata, West Bengal, India", // EDIT: Your business display address
     facebookUrl: "https://www.facebook.com/koyel.mallick.194152", // EDIT: link to your Facebook page or post
     instagramUrl: "https://www.instagram.com/wistful_bloom_/",
     threadsUrl: "https://www.threads.com/@wistful_bloom_",
@@ -83,7 +84,11 @@ const PRODUCTS = [
 // --- Fill in shop name wherever it appears ---
 document.getElementById("nav-shop-name").textContent = CONFIG.shopName;
 document.getElementById("footerShopName").textContent = CONFIG.shopName;
-document.title = CONFIG.shopName + " — Handmade Pipe Cleaner Flowers";
+document.title = CONFIG.shopName + " - Handmade Pipe Cleaner Flowers";
+
+// --- Fill in dynamic seller details in the order info block ---
+document.getElementById("seller-phone").textContent = CONFIG.ownerPhoneDisplay;
+document.getElementById("seller-address").textContent = CONFIG.ownerAddress;
 
 // --- Build the WhatsApp + Call contact buttons ---
 document.getElementById("waContactBtn").href =
@@ -192,4 +197,29 @@ form.addEventListener("submit", (e) => {
 
     formMsg.style.display = "block";
     form.reset();
+});
+
+// --- Theme Light/Dark Switcher Feature ---
+const themeToggleBtn = document.getElementById("themeToggleBtn");
+const themeIcon = themeToggleBtn.querySelector("i");
+
+// Check user choice from previous visits
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme === "light") {
+    document.body.classList.add("light-theme");
+    themeIcon.classList.replace("fa-sun", "fa-moon");
+}
+
+themeToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-theme");
+    
+    let theme = "dark";
+    if (document.body.classList.contains("light-theme")) {
+        theme = "light";
+        themeIcon.classList.replace("fa-sun", "fa-moon");
+    } else {
+        themeIcon.classList.replace("fa-moon", "fa-sun");
+    }
+    
+    localStorage.setItem("theme", theme);
 });
