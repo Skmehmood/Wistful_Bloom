@@ -127,7 +127,7 @@ PRODUCTS.forEach((p) => {
     const opt = document.createElement("option");
     opt.value = p.name;
     productSelect.insertBefore(opt, productSelect.lastElementChild);
-    opt.textContent = p.name + " — ₹" + p.price;
+    opt.textContent = p.name + " - ₹" + p.price;
 });
 
 // --- Quick "Order on WhatsApp" buttons on each product card ---
