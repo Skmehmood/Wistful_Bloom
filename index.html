@@ -15,6 +15,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap"
         rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="images/MainLogo.png">
+    <link href="https://googleapis.com" rel="stylesheet">
+
 </head>
 
 <body>
@@ -33,13 +36,14 @@
                 <img src="images/MainLogo.png" alt="" style="height: 45px; width: 45px; border-radius: 50%" />
                 <span id="nav-shop-name">Wistful &amp; Bloom</span>
             </a>
-            
+
             <div class="nav-actions-wrapper" style="display: flex; align-items: center; gap: 15px;">
                 <!-- Theme Toggle Button -->
-                <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme" style="background: none; border: none; font-size: 1.3rem; cursor: pointer; color: white;">
+                <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme"
+                    style="background: none; border: none; font-size: 1.3rem; cursor: pointer; color: white;">
                     <i class="fa-solid fa-sun"></i>
                 </button>
-                
+
                 <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
                     &#9776;
                 </button>
@@ -227,7 +231,8 @@
                         <i class="fa-brands fa-whatsapp" style="color: green; font-weight: 700; font-size: large;"></i>
                         Prefer to skip the form? You can message us directly on WhatsApp
                         any time using the button in the
-                        <a href="#contact" style="color: var(--coral-dark); font-weight: 800; text-decoration: none;">Contact</a>
+                        <a href="#contact"
+                            style="color: var(--coral-dark); font-weight: 800; text-decoration: none;">Contact</a>
                         section below.
                     </div>
 
@@ -289,7 +294,7 @@
                         </div>
                         <div class="field">
                             <label for="quantity">Quantity</label>
-                            <input type="number" id="quantity" name="quantity" min="1" value="1" />
+                            <input type="number" name="quantity" min="1" step="1" value="1" required>
                         </div>
                     </div>
 

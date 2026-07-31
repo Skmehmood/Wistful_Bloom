@@ -163,6 +163,11 @@ const formMsg = document.getElementById("formMsg");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    // Force the quantity to be an integer, fallback to 1 if empty
+    const rawQuantity = parseInt(form.quantity.value, 10) || 1;
+    // Safety check: if the number is less than 1, force it to be 1
+    const safeQuantity = Math.max(1, rawQuantity);
+
     const data = {
         name: form.fullName.value.trim(),
         email: form.email.value.trim(),
@@ -170,7 +175,7 @@ form.addEventListener("submit", (e) => {
         whatsapp: form.whatsapp.value.trim(),
         address: form.address.value.trim(),
         product: form.product.value,
-        quantity: form.quantity.value || "1",
+        quantity: safeQuantity.toString(), // Holds the validated positive number
         notes: form.notes.value.trim(),
     };
 
@@ -199,6 +204,7 @@ form.addEventListener("submit", (e) => {
     form.reset();
 });
 
+
 // --- Theme Light/Dark Switcher Feature ---
 const themeToggleBtn = document.getElementById("themeToggleBtn");
 const themeIcon = themeToggleBtn.querySelector("i");
@@ -212,7 +218,7 @@ if (currentTheme === "light") {
 
 themeToggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("light-theme");
-    
+
     let theme = "dark";
     if (document.body.classList.contains("light-theme")) {
         theme = "light";
@@ -220,6 +226,6 @@ themeToggleBtn.addEventListener("click", () => {
     } else {
         themeIcon.classList.replace("fa-moon", "fa-sun");
     }
-    
+
     localStorage.setItem("theme", theme);
 });
