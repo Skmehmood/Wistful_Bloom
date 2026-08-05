@@ -282,9 +282,9 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 1.3rem;
+    font-family: Tahoma, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
     color: var(--text-primary);
     text-decoration: none;
     transition: transform 0.25s ease;
@@ -618,6 +618,9 @@ body.light-theme .fact .num {
 
 .card-body h3 {
     color: var(--text-primary);
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
 }
 
 .card-body .desc {
@@ -687,9 +690,9 @@ body.light-theme .fact .num {
 }
 
 .price {
-    font-family: "Fredoka";
-    font-weight: 700;
-    font-size: 1.15rem;
+    font-family: Geneva, Verdana, sans-serif;
+    font-weight: 550;
+    font-size: 1.2rem;
     color: var(--text-primary);
 }
 
@@ -745,8 +748,8 @@ body.light-theme .fact .num {
 
 .step h3 {
     color: var(--text-primary);
-    margin-top: 6px;
-    font-size: 1.1rem;
+    margin-top: 6px;    
+    font-size: 1.2rem;
 }
 
 .step p {
@@ -893,6 +896,8 @@ form.order-form {
 }
 
 .seller-info-box h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
     font-size: 1.1rem;
     margin-bottom: 14px;
     display: flex;
