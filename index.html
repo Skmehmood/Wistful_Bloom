@@ -360,6 +360,30 @@
             <a href="#top">Back to top</a>
         </p>
     </footer>
+
+    <!-- ============================= AMAZON-STYLE PRODUCT MODAL ============================= -->
+    <div id="productModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close Window">&times;</button>
+            <div class="modal-body">
+                <div class="modal-gallery">
+                    <div class="modal-thumbnails" id="modalThumbnails"></div>
+                    <div class="modal-main-image-wrap">
+                        <button class="modal-nav-btn prev" id="modalPrev" aria-label="Previous Image">&#10094;</button>
+                        <img id="modalMainImg" src="" alt="Product View" />
+                        <button class="modal-nav-btn next" id="modalNext" aria-label="Next Image">&#10095;</button>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <h2 id="modalTitle"></h2>
+                    <div class="modal-price" id="modalPrice"></div>
+                    <p id="modalDesc"></p>
+                    <a class="btn btn-dark" id="modalWaBtn" href="#" style="margin-top: 15px; width: 100%; justify-content: center;">Order on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="BloomScript.js"></script>
 </body>
 

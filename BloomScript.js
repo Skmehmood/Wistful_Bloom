@@ -1,4 +1,3 @@
-
 /* =========================================================================
            1) CONFIG — EDIT THIS SECTION WITH YOUR OWN DETAILS
            =========================================================================
@@ -30,6 +29,7 @@ const PRODUCTS = [
         price: 150,
         emoji: "🌻",
         img: "images/sunflower.jpg",
+        images: ["images/sunflower.jpg"],
         desc: "A single cheerful sunflower, handcrafted stem by stem.",
     },
     {
@@ -38,6 +38,7 @@ const PRODUCTS = [
         price: 450,
         emoji: "🌹",
         img: "images/rose-bouquet.jpg",
+        images: ["images/rose-bouquet.jpg"],
         desc: "Six ruby-red pipe cleaner roses wrapped in craft paper.",
     },
     {
@@ -46,6 +47,7 @@ const PRODUCTS = [
         price: 250,
         emoji: "🌼",
         img: "images/daisy.jpg",
+        images: ["images/daisy.jpg"],
         desc: "A cheerful bunch of daisies in soft pastel colours.",
     },
     {
@@ -54,6 +56,7 @@ const PRODUCTS = [
         price: 300,
         emoji: "🌷",
         img: "images/tulip.jpg",
+        images: ["images/tulip.jpg"],
         desc: "Three colourful tulips, perfect for a small vase.",
     },
     {
@@ -62,6 +65,7 @@ const PRODUCTS = [
         price: 120,
         emoji: "💜",
         img: "images/lavender.jpg",
+        images: ["images/lavender.jpg"],
         desc: "A single calming lavender stem.",
     },
     {
@@ -70,6 +74,7 @@ const PRODUCTS = [
         price: 600,
         emoji: "💐",
         img: "images/rainbow.jpg",
+        images: ["images/rainbow.jpg"],
         desc: "A vibrant mix of every colour, made to order.",
     },
     {
@@ -77,8 +82,9 @@ const PRODUCTS = [
         name: "Lily",
         price: 89,
         emoji: "🌷",
-        img: "images/lily.jpeg",
-        desc: "",
+        img: "images/lily1.jpeg",
+        images: ["images/lily1.jpeg", "images/lily2.png", "images/lily3.png"],
+        desc: "Handmade pipe cleaner lily shown from various angles.",
     },
 ];
 
@@ -112,6 +118,7 @@ PRODUCTS.forEach((p) => {
     // Product card
     const card = document.createElement("div");
     card.className = "card";
+    card.setAttribute("data-id", p.id);
     card.innerHTML = `
     <div class="card-media">
       <img src="${p.img}" alt="${p.name}" loading="lazy"
@@ -141,16 +148,27 @@ PRODUCTS.forEach((p) => {
 // --- Quick "Order on WhatsApp" buttons on each product card ---
 grid.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-product]");
-    if (!btn) return;
-    e.preventDefault();
-    const message = `Hi ${CONFIG.shopName}! I'd like to order: ${btn.dataset.product}. Could you tell me more?`;
-    window.open(
-        "https://wa.me/" +
-        CONFIG.ownerWhatsApp +
-        "?text=" +
-        encodeURIComponent(message),
-        "_blank",
-    );
+    if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const message = `Hi ${CONFIG.shopName}! I'd like to order: ${btn.dataset.product}. Could you tell me more?`;
+        window.open(
+            "https://wa.me/" +
+            CONFIG.ownerWhatsApp +
+            "?text=" +
+            encodeURIComponent(message),
+            "_blank",
+        );
+        return;
+    }
+
+    // Open Modal Viewer when clicking on product card/media
+    const card = e.target.closest(".card");
+    if (card) {
+        const productId = card.getAttribute("data-id");
+        const product = PRODUCTS.find((p) => p.id === productId);
+        if (product) openModal(product);
+    }
 });
 
 // --- Mobile menu toggle ---
@@ -212,7 +230,6 @@ form.addEventListener("submit", (e) => {
     form.reset();
 });
 
-
 // --- Theme Light/Dark Switcher Feature ---
 const themeToggleBtn = document.getElementById("themeToggleBtn");
 const themeIcon = themeToggleBtn.querySelector("i");
@@ -236,4 +253,82 @@ themeToggleBtn.addEventListener("click", () => {
     }
 
     localStorage.setItem("theme", theme);
+});
+
+/* =========================================================================
+   4) AMAZON-STYLE PRODUCT MODAL LOGIC
+   ========================================================================= */
+const productModal = document.getElementById("productModal");
+const modalClose = document.getElementById("modalClose");
+const modalThumbnails = document.getElementById("modalThumbnails");
+const modalMainImg = document.getElementById("modalMainImg");
+const modalTitle = document.getElementById("modalTitle");
+const modalPrice = document.getElementById("modalPrice");
+const modalDesc = document.getElementById("modalDesc");
+const modalWaBtn = document.getElementById("modalWaBtn");
+const modalPrev = document.getElementById("modalPrev");
+const modalNext = document.getElementById("modalNext");
+
+let currentImageList = [];
+let currentImageIndex = 0;
+
+function openModal(product) {
+    currentImageList = product.images && product.images.length ? product.images : [product.img];
+    currentImageIndex = 0;
+
+    modalTitle.textContent = product.name;
+    modalPrice.innerHTML = `₹${product.price} <small style="font-size: 0.8rem;">onwards</small>`;
+    modalDesc.textContent = product.desc;
+
+    const message = `Hi ${CONFIG.shopName}! I'd like to order: ${product.name}. Could you tell me more?`;
+    modalWaBtn.href = "https://wa.me/" + CONFIG.ownerWhatsApp + "?text=" + encodeURIComponent(message);
+    modalWaBtn.target = "_blank";
+
+    updateModalGallery();
+    productModal.classList.add("open");
+    productModal.setAttribute("aria-hidden", "false");
+}
+
+function closeModal() {
+    productModal.classList.remove("open");
+    productModal.setAttribute("aria-hidden", "true");
+}
+
+function updateModalGallery() {
+    modalMainImg.src = currentImageList[currentImageIndex];
+    modalThumbnails.innerHTML = "";
+
+    if (currentImageList.length <= 1) {
+        modalPrev.style.display = "none";
+        modalNext.style.display = "none";
+    } else {
+        modalPrev.style.display = "flex";
+        modalNext.style.display = "flex";
+    }
+
+    currentImageList.forEach((imgSrc, idx) => {
+        const thumb = document.createElement("img");
+        thumb.src = imgSrc;
+        if (idx === currentImageIndex) thumb.classList.add("active");
+        thumb.addEventListener("click", () => {
+            currentImageIndex = idx;
+            updateModalGallery();
+        });
+        modalThumbnails.appendChild(thumb);
+    });
+}
+
+modalPrev.addEventListener("click", () => {
+    currentImageIndex = (currentImageIndex - 1 + currentImageList.length) % currentImageList.length;
+    updateModalGallery();
+});
+
+modalNext.addEventListener("click", () => {
+    currentImageIndex = (currentImageIndex + 1) % currentImageList.length;
+    updateModalGallery();
+});
+
+modalClose.addEventListener("click", closeModal);
+productModal.addEventListener("click", (e) => {
+    if (e.target === productModal) closeModal();
 });
