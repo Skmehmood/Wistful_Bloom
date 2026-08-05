@@ -72,6 +72,14 @@ const PRODUCTS = [
         img: "images/rainbow.jpg",
         desc: "A vibrant mix of every colour, made to order.",
     },
+    {
+        id: "lily",
+        name: "Lily",
+        price: 89,
+        emoji: "🌷",
+        img: "images/lily.jpeg",
+        desc: "",
+    },
 ];
 
 /* =========================================================================

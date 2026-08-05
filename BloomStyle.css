@@ -692,7 +692,7 @@ body.light-theme .fact .num {
 .price {
     font-family: Geneva, Verdana, sans-serif;
     font-weight: 550;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--text-primary);
 }
 
@@ -749,7 +749,7 @@ body.light-theme .fact .num {
 .step h3 {
     color: var(--text-primary);
     margin-top: 6px;    
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .step p {
