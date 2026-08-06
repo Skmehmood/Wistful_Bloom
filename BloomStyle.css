@@ -456,6 +456,7 @@ body:not(.light-theme) .hero {
 }
 
 .hero p.lead {
+    text-align: justify;
     font-size: 1.15rem;
     max-width: 46ch;
     color: var(--text-muted);
