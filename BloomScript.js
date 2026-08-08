@@ -9,22 +9,21 @@ const CONFIG = {
     shopName: "Wistful & Bloom", // EDIT: your shop name, shown in the header and footer
     ownerWhatsApp: "8621878167", // EDIT: your WhatsApp number — country code + number, digits only, no + no spaces (e.g. India = 91XXXXXXXXXX)
     ownerPhoneDisplay: "+91 8621878767", // EDIT: your phone number as customers should see/dial it
-    ownerAddress: "Kolkata, West Bengal, India", // EDIT: Your business display address
+    ownerAddress: "Howrah, West Bengal, India", // EDIT: Your business display address
     facebookUrl: "https://www.facebook.com/koyel.mallick.194152", // EDIT: link to your Facebook page or post
     instagramUrl: "https://www.instagram.com/wistful_bloom_/",
     threadsUrl: "https://www.threads.com/@wistful_bloom_",
 };
 
 /* =========================================================================
-           2) PRODUCTS — EDIT, ADD, OR REMOVE FLOWERS HERE
+           2) PRODUCTS — EDIT, ADD, OR REMOVE ITEMS HERE
            =========================================================================
-           Copy one block (from { to },) to add a new flower. Give it a unique "id".
-           "img" should point to a photo inside your "images" folder — if that photo
-           isn't found, a flower emoji is shown instead so the page never looks broken.
+           Categories added: "flowers", "keychain", "clip"
         */
 const PRODUCTS = [
     {
         id: "sunflower",
+        category: "flowers",
         name: "Sunny Sunflower Stem",
         price: 150,
         emoji: "🌻",
@@ -34,15 +33,17 @@ const PRODUCTS = [
     },
     {
         id: "OliveLavenderRose",
+        category: "flowers",
         name: "Olive Lavender Rose",
         price: 89,
         emoji: "🌹",
         img: "images/Olive_Lavender_Rose1.jpeg",
         images: ["images/Olive_Lavender_Rose1.jpeg", "images/Olive_Lavender_Rose2.png", "images/Olive_Lavender_Rose3.png"],
-        desc: "A handmade pipe cleaner olive lavender rose , perfect for gifting or decorating any space.",
+        desc: "A handmade pipe cleaner olive lavender rose, perfect for gifting or decorating any space.",
     },
     {
         id: "Purpledaisy",
+        category: "flowers",
         name: "Purple Daisy",
         price: 89,
         emoji: "🌼",
@@ -52,6 +53,7 @@ const PRODUCTS = [
     },
     {
         id: "tulip",
+        category: "flowers",
         name: "Tulip Trio",
         price: 300,
         emoji: "🌷",
@@ -61,6 +63,7 @@ const PRODUCTS = [
     },
     {
         id: "lavender",
+        category: "flowers",
         name: "Lavender Sprig",
         price: 120,
         emoji: "💜",
@@ -70,6 +73,7 @@ const PRODUCTS = [
     },
     {
         id: "rainbow",
+        category: "flowers",
         name: "Rainbow Mixed Bouquet",
         price: 600,
         emoji: "💐",
@@ -79,6 +83,7 @@ const PRODUCTS = [
     },
     {
         id: "Bluelily",
+        category: "flowers",
         name: "Blue Lily",
         price: 89,
         emoji: "🌷",
@@ -88,6 +93,7 @@ const PRODUCTS = [
     },
     {
         id: "Pinklily",
+        category: "flowers",
         name: "Pink Lily",
         price: 89,
         emoji: "🌷",
@@ -97,6 +103,7 @@ const PRODUCTS = [
     },
     {
         id: "Orangelily",
+        category: "flowers",
         name: "Orange Lily",
         price: 89,
         emoji: "🌷",
@@ -106,6 +113,7 @@ const PRODUCTS = [
     },
     {
         id: "Pastelflower",
+        category: "flowers",
         name: "Pastel Flower",
         price: 89,
         emoji: "🌷",
@@ -115,26 +123,67 @@ const PRODUCTS = [
     },
     {
         id: "Pinklily(desing2)",
-        name: "Pink Lily ( Another Design)",
+        category: "flowers",
+        name: "Pink Lily (Another Design)",
         price: 89,
         emoji: "🌷",
         img: "images/Pinklily(design2)1.jpeg",
         images: ["images/Pinklily(design2)1.jpeg", "images/Pinklily(design2)2.png", "images/Pinklily(design2)3.png"],
         desc: "A handmade pink lily with bright pink petals and vibrant green leaves, carefully crafted to create a bold and elegant bloom that lasts forever.",
     },
+    // Keychain Sample Items
+    {
+        id: "flowerKeychain",
+        category: "keychain",
+        name: "Mini Flower Charm Keychain",
+        price: 49,
+        emoji: "🔑",
+        img: "images/keychain1.jpeg",
+        images: ["images/keychain1.jpeg"],
+        desc: "A cute handmade pipe cleaner mini flower keychain charm for bags or keys.",
+    },
+    {
+        id: "flowerKeychain",
+        category: "keychain",
+        name: "Mini Flower Charm Keychain",
+        price: 49,
+        emoji: "🔑",
+        img: "images/keychain2.jpeg",
+        images: ["images/keychain2.jpeg"],
+        desc: "A cute handmade pipe cleaner mini flower keychain charm for bags or keys.",
+    },
+    // Clip Sample Items
+    {
+        id: "flowerClip",
+        category: "clip",
+        name: "Handmade Floral Hair Clip",
+        price: 39,
+        emoji: "🎀",
+        img: "images/clip1.jpeg",
+        images: ["images/clip1.jpeg"],
+        desc: "A beautifully crafted pipe cleaner bloom attached to a durable hair clip.",
+    },
+    {
+        id: "flowerClip",
+        category: "clip",
+        name: "Handmade Floral Hair Clip",
+        price: 39,
+        emoji: "🎀",
+        img: "images/clip2.jpeg",
+        images: ["images/clip2.jpeg"],
+        desc: "A beautifully crafted pipe cleaner bloom attached to a durable hair clip.",
+    },
 ];
 
 /* =========================================================================
            3) EVERYTHING BELOW THIS LINE MAKES THE PAGE WORK.
-           You don't need to edit anything below — but nothing bad happens if you
-           just leave it as is.
            =========================================================================
         */
 
 // --- Fill in shop name wherever it appears ---
 document.getElementById("nav-shop-name").textContent = CONFIG.shopName;
 document.getElementById("footerShopName").textContent = CONFIG.shopName;
-document.title = CONFIG.shopName + " - Handmade Pipe Cleaner Flowers";
+document.title = CONFIG.shopName + " - Handmade Pipe Cleaner Creations";
 
 // --- Fill in dynamic seller details in the order info block ---
 document.getElementById("seller-phone").textContent = CONFIG.ownerPhoneDisplay;
@@ -146,40 +195,103 @@ document.getElementById("waContactBtn").href =
 document.getElementById("callBtn").href =
     "tel:" + CONFIG.ownerPhoneDisplay.replace(/\s/g, "");
 
-// --- Render product cards + order form dropdown from the PRODUCTS list ---
+// --- Render product cards + populate order form dropdown ---
 const grid = document.getElementById("productGrid");
 const productSelect = document.getElementById("product");
+const formCategorySelect = document.getElementById("formCategory");
 
-PRODUCTS.forEach((p) => {
-    // Product card
-    const card = document.createElement("div");
-    card.className = "card";
-    card.setAttribute("data-id", p.id);
-    card.innerHTML = `
-    <div class="card-media">
-      <img src="${p.img}" alt="${p.name}" loading="lazy"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      <div class="placeholder-emoji" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">
-        ${p.emoji}
+function renderProducts(category = "all") {
+    grid.innerHTML = "";
+    
+    const filteredProducts = category === "all" 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === category);
+
+    filteredProducts.forEach((p) => {
+        // Product card
+        const card = document.createElement("div");
+        card.className = "card";
+        card.setAttribute("data-id", p.id);
+        card.setAttribute("data-category", p.category);
+        card.innerHTML = `
+        <div class="card-media">
+          <img src="${p.img}" alt="${p.name}" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-emoji" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">
+            ${p.emoji}
+          </div>
         </div>
-    </div>
-    <div class="card-body">
-      <h3>${p.name}</h3>
-      <p class="desc">${p.desc}</p>
-      <div class="card-foot">
-        <div class="price">₹${p.price} <small>onwards</small></div>
-        <a class="btn btn-dark btn-sm" href="#" data-product="${p.name}">Order on WhatsApp</a>
-      </div>
-    </div>
-  `;
-    grid.appendChild(card);
+        <div class="card-body">
+          <h3>${p.name}</h3>
+          <p class="desc">${p.desc}</p>
+          <div class="card-foot">
+            <div class="price">₹${p.price} <small>onwards</small></div>
+            <a class="btn btn-dark btn-sm" href="#" data-product="${p.name}">Order on WhatsApp</a>
+          </div>
+        </div>
+      `;
+        grid.appendChild(card);
+    });
+}
 
-    // Dropdown option in the order form
-    const opt = document.createElement("option");
-    opt.value = p.name;
-    productSelect.insertBefore(opt, productSelect.lastElementChild);
-    opt.textContent = p.name + " - ₹" + p.price;
+function updateProductDropdown(category = "all") {
+    // Clear dynamic options (keep default option and Custom option)
+    productSelect.innerHTML = `
+        <option value="" disabled selected>Select an option</option>
+        <option value="Custom / Other (see notes)">Custom / Other (see notes)</option>
+    `;
+
+    const filteredProducts = category === "all" 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === category);
+
+    filteredProducts.forEach((p) => {
+        const opt = document.createElement("option");
+        opt.value = p.name;
+        opt.textContent = p.name + " - ₹" + p.price;
+        productSelect.insertBefore(opt, productSelect.lastElementChild);
+    });
+}
+
+// Initial render
+renderProducts("all");
+updateProductDropdown("all");
+
+// --- Category Filtering Event Listeners (Shop Section) ---
+const filterButtons = document.querySelectorAll(".filter-btn");
+filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const selectedCategory = btn.getAttribute("data-category");
+        renderProducts(selectedCategory);
+
+        // Synchronize category dropdown in order form
+        if (formCategorySelect) {
+            formCategorySelect.value = selectedCategory;
+            updateProductDropdown(selectedCategory);
+        }
+    });
 });
+
+// Category Dropdown Change Listener (Order Form Section)
+if (formCategorySelect) {
+    formCategorySelect.addEventListener("change", (e) => {
+        const selectedCategory = e.target.value;
+        updateProductDropdown(selectedCategory);
+
+        // Synchronize Shop Category Buttons
+        filterButtons.forEach((b) => {
+            if (b.getAttribute("data-category") === selectedCategory) {
+                b.classList.add("active");
+            } else {
+                b.classList.remove("active");
+            }
+        });
+        renderProducts(selectedCategory);
+    });
+}
 
 // --- Quick "Order on WhatsApp" buttons on each product card ---
 grid.addEventListener("click", (e) => {
@@ -220,15 +332,16 @@ navLinks.addEventListener("click", (e) => {
 
 // --- Order form: build a WhatsApp message from the entered details ---
 const form = document.getElementById("orderForm");
-const formMsg = document.getElementById("formMsg");
+const formMsgSuccess = document.getElementById("formMsgSuccess");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     // Force the quantity to be an integer, fallback to 1 if empty
     const rawQuantity = parseInt(form.quantity.value, 10) || 1;
-    // Safety check: if the number is less than 1, force it to be 1
     const safeQuantity = Math.max(1, rawQuantity);
+
+    const categoryText = formCategorySelect.options[formCategorySelect.selectedIndex].text;
 
     const data = {
         name: form.fullName.value.trim(),
@@ -236,8 +349,9 @@ form.addEventListener("submit", (e) => {
         phone: form.phone.value.trim(),
         whatsapp: form.whatsapp.value.trim(),
         address: form.address.value.trim(),
+        category: categoryText,
         product: form.product.value,
-        quantity: safeQuantity.toString(), // Holds the validated positive number
+        quantity: safeQuantity.toString(),
         notes: form.notes.value.trim(),
     };
 
@@ -248,6 +362,7 @@ form.addEventListener("submit", (e) => {
         `Phone: ${data.phone}`,
         `WhatsApp: ${data.whatsapp}`,
         `Address: ${data.address}`,
+        `Category: ${data.category}`,
         `Item: ${data.product}`,
         `Quantity: ${data.quantity}`,
         data.notes ? `Notes: ${data.notes}` : null,
@@ -262,7 +377,7 @@ form.addEventListener("submit", (e) => {
         "_blank",
     );
 
-    formMsg.style.display = "block";
+    if (formMsgSuccess) formMsgSuccess.style.display = "block";
     form.reset();
 });
 
@@ -270,7 +385,6 @@ form.addEventListener("submit", (e) => {
 const themeToggleBtn = document.getElementById("themeToggleBtn");
 const themeIcon = themeToggleBtn.querySelector("i");
 
-// Check user choice from previous visits
 const currentTheme = localStorage.getItem("theme");
 if (currentTheme === "light") {
     document.body.classList.add("light-theme");

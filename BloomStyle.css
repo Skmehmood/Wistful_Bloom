@@ -581,7 +581,7 @@ body.light-theme .fact .num {
     }
 }
 
-/* ---------- THE SHOP ---------- */
+/* ---------- THE SHOP & CATEGORY FILTERS ---------- */
 .shop {
     background: var(--bg-main);
 }
@@ -598,6 +598,41 @@ body.light-theme .fact .num {
 
 .shop-head p {
     color: var(--text-muted);
+}
+
+/* Sub-section Filter Buttons */
+.category-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.filter-btn {
+    background: var(--bg-box);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--coral);
+    color: var(--coral);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--coral);
+    color: #ffffff;
+    border-color: var(--coral);
+    box-shadow: 0 4px 12px rgba(255, 119, 168, 0.3);
 }
 
 .grid-products {

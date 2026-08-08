@@ -159,11 +159,18 @@
             <div class="wrap">
                 <div class="shop-head">
                     <span class="eyebrow">The Shop</span>
-                    <h2>Pick your favourite bloom</h2>
+                    <h2>Pick your favourite item</h2>
                     <p>
-                        Tap "Order on WhatsApp" under any flower to message directly, or
-                        fill in the full order form below.
+                        Filter by category below or tap "Order on WhatsApp" under any item to message directly.
                     </p>
+                    
+                    <!-- Sub-section category filters -->
+                    <div class="category-filters" id="categoryFilters">
+                        <button class="filter-btn active" data-category="all">All Items</button>
+                        <button class="filter-btn" data-category="flowers">1. Flowers &amp; Bouquet</button>
+                        <button class="filter-btn" data-category="keychain">2. Keychain</button>
+                        <button class="filter-btn" data-category="clip">3. Clip</button>
+                    </div>
                 </div>
                 <div class="grid-products" id="productGrid">
                 </div>
@@ -286,9 +293,20 @@
                             placeholder="House/Flat, Street, Area, City, State, PIN code"></textarea>
                     </div>
 
+                    <!-- Category Selection Dropdown -->
+                    <div class="field">
+                        <label for="formCategory">Select Section / Category *</label>
+                        <select id="formCategory" name="formCategory" required>
+                            <option value="all">Show All Categories</option>
+                            <option value="flowers">1. Flowers &amp; Bouquet</option>
+                            <option value="keychain">2. Keychain</option>
+                            <option value="clip">3. Clip</option>
+                        </select>
+                    </div>
+
                     <div class="field-row">
                         <div class="field">
-                            <label for="product">Which flower / bouquet? *</label>
+                            <label for="product">Which item / product? *</label>
                             <select id="product" name="product" required>
                                 <option value="" disabled selected>Select an option</option>
                                 <option value="Custom / Other (see notes)">
@@ -315,7 +333,7 @@
                         We also accept customized orders.
                         Message us on WhatsApp with your requirements to place your order.
                     </div>
-                    <div class="form-msg success" id="formMsg">
+                    <div class="form-msg success" id="formMsgSuccess">
                         Thanks! WhatsApp should have opened in a new tab with your order
                         details, just press send there to confirm.
                         <i class="fa-solid fa-seedling"></i>
