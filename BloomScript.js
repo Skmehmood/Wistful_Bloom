@@ -7,8 +7,8 @@
         */
 const CONFIG = {
     shopName: "Wistful & Bloom", // EDIT: your shop name, shown in the header and footer
-    ownerWhatsApp: "8621878167", // EDIT: your WhatsApp number — country code + number, digits only, no + no spaces (e.g. India = 91XXXXXXXXXX)
-    ownerPhoneDisplay: "+91 8621878767", // EDIT: your phone number as customers should see/dial it
+    ownerWhatsApp: "8961224516", // EDIT: your WhatsApp number — country code + number, digits only, no + no spaces (e.g. India = 91XXXXXXXXXX)
+    ownerPhoneDisplay: "+91 8961224516", // EDIT: your phone number as customers should see/dial it
     ownerAddress: "Howrah, West Bengal, India", // EDIT: Your business display address
     facebookUrl: "https://www.facebook.com/koyel.mallick.194152", // EDIT: link to your Facebook page or post
     instagramUrl: "https://www.instagram.com/wistful_bloom_/",
@@ -27,8 +27,8 @@ const PRODUCTS = [
         name: "Sunny Sunflower Stem",
         price: 150,
         emoji: "🌻",
-        img: "images/sunflower.jpg",
-        images: ["images/sunflower.jpg"],
+        img: "images/flowers/sunflower.jpg",
+        images: ["images/flowers/sunflower.jpg"],
         desc: "A single cheerful sunflower, handcrafted stem by stem.",
     },
     {
@@ -37,8 +37,8 @@ const PRODUCTS = [
         name: "Olive Lavender Rose",
         price: 89,
         emoji: "🌹",
-        img: "images/Olive_Lavender_Rose1.jpeg",
-        images: ["images/Olive_Lavender_Rose1.jpeg", "images/Olive_Lavender_Rose2.png", "images/Olive_Lavender_Rose3.png"],
+        img: "images/flowers/.jpeg",
+        images: ["images/flowers/Olive_Lavender_Rose1.jpeg", "images/flowers/Olive_Lavender_Rose2.png", "images/flowers/Olive_Lavender_Rose3.png"],
         desc: "A handmade pipe cleaner olive lavender rose, perfect for gifting or decorating any space.",
     },
     {
@@ -47,8 +47,8 @@ const PRODUCTS = [
         name: "Purple Daisy",
         price: 89,
         emoji: "🌼",
-        img: "images/Purpledaisy1.jpeg",
-        images: ["images/Purpledaisy1.jpeg", "images/Purpledaisy2.png", "images/Purpledaisy3.png"],
+        img: "images/flowers/Purpledaisy1.jpeg",
+        images: ["images/flowers/Purpledaisy1.jpeg", "images/flowers/Purpledaisy2.png", "images/flowers/Purpledaisy3.png"],
         desc: "A unique pipe cleaner flower, beautifully handcrafted for a thoughtful gift.",
     },
     {
@@ -57,8 +57,8 @@ const PRODUCTS = [
         name: "Tulip Trio",
         price: 300,
         emoji: "🌷",
-        img: "images/tulip.jpg",
-        images: ["images/tulip.jpg"],
+        img: "images/flowers/tulip.jpg",
+        images: ["images/flowers/tulip.jpg"],
         desc: "Three colourful tulips, perfect for a small vase.",
     },
     {
@@ -67,8 +67,8 @@ const PRODUCTS = [
         name: "Lavender Sprig",
         price: 120,
         emoji: "💜",
-        img: "images/lavender.jpg",
-        images: ["images/lavender.jpg"],
+        img: "images/flowers/lavender.jpg",
+        images: ["images/flowers/lavender.jpg"],
         desc: "A single calming lavender stem.",
     },
     {
@@ -77,8 +77,8 @@ const PRODUCTS = [
         name: "Rainbow Mixed Bouquet",
         price: 600,
         emoji: "💐",
-        img: "images/rainbow.jpg",
-        images: ["images/rainbow.jpg"],
+        img: "images/flowers/rainbow.jpg",
+        images: ["images/flowers/rainbow.jpg"],
         desc: "A vibrant mix of every colour, made to order.",
     },
     {
@@ -87,8 +87,8 @@ const PRODUCTS = [
         name: "Blue Lily",
         price: 89,
         emoji: "🌷",
-        img: "images/Bluelily1.jpeg",
-        images: ["images/Bluelily1.jpeg", "images/Bluelily2.png", "images/Bluelily3.png"],
+        img: "images/flowers/Bluelily1.jpeg",
+        images: ["images/flowers/Bluelily1.jpeg", "images/flowers/Bluelily2.png", "images/flowers/Bluelily3.png"],
         desc: "A beautiful handmade blue lily that stays fresh forever, making every moment special.",
     },
     {
@@ -97,8 +97,8 @@ const PRODUCTS = [
         name: "Pink Lily",
         price: 89,
         emoji: "🌷",
-        img: "images/Pinklily1.jpeg",
-        images: ["images/Pinklily1.jpeg", "images/Pinklily2.png", "images/Pinklily3.png"],
+        img: "images/flowers/Pinklily1.jpeg",
+        images: ["images/flowers/Pinklily1.jpeg", "images/flowers/Pinklily2.png", "images/flowers/Pinklily3.png"],
         desc: "A handmade pink lily with bright pink petals and vibrant green leaves, carefully crafted to create a bold and elegant bloom that lasts forever.",
     },
     {
@@ -107,8 +107,8 @@ const PRODUCTS = [
         name: "Orange Lily",
         price: 89,
         emoji: "🌷",
-        img: "images/Orangelily1.jpeg",
-        images: ["images/Orangelily1.jpeg", "images/Orangelily2.png", "images/Orangelily3.png"],
+        img: "images/flowers/Orangelily1.jpeg",
+        images: ["images/flowers/Orangelily1.jpeg", "images/flowers/Orangelily2.png", "images/flowers/Orangelily3.png"],
         desc: "A beautiful handmade orange lily with warm sunset-inspired petals and a delicate pearl center, making it a unique and long-lasting keepsake.",
     },
     {
@@ -117,8 +117,8 @@ const PRODUCTS = [
         name: "Pastel Flower",
         price: 89,
         emoji: "🌷",
-        img: "images/Pastelflower1.jpeg",
-        images: ["images/Pastelflower1.jpeg", "images/Pastelflower2.png", "images/Pastelflower3.png", "images/Pastelflower4.png", "images/Pastelflower5.png"],
+        img: "images/flowers/Pastelflower1.jpeg",
+        images: ["images/flowers/Pastelflower1.jpeg", "images/flowers/Pastelflower2.png", "images/flowers/Pastelflower3.png", "images/flowers/Pastelflower4.png", "images/flowers/Pastelflower5.png"],
         desc: "A handmade pastel flower featuring soft purple and mint petals with vibrant green leaves.",
     },
     {
@@ -127,8 +127,8 @@ const PRODUCTS = [
         name: "Pink Lily (Another Design)",
         price: 89,
         emoji: "🌷",
-        img: "images/Pinklily(design2)1.jpeg",
-        images: ["images/Pinklily(design2)1.jpeg", "images/Pinklily(design2)2.png", "images/Pinklily(design2)3.png"],
+        img: "images/flowers/Pinklily(design2)1.jpeg",
+        images: ["images/flowers/Pinklily(design2)1.jpeg", "images/flowers/Pinklily(design2)2.png", "images/flowers/Pinklily(design2)3.png"],
         desc: "A handmade pink lily with bright pink petals and vibrant green leaves, carefully crafted to create a bold and elegant bloom that lasts forever.",
     },
     // Keychain Sample Items
