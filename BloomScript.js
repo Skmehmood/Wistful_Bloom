@@ -62,13 +62,14 @@ const PRODUCTS = [
         desc: "Three colourful tulips, perfect for a small vase.",
     },
     {
-        id: "lavender",
+        id: "Olive Lavender Rose",
         category: "flowers",
         name: "Lavender Sprig",
-        price: 120,
+        price: 89,
         emoji: "💜",
-        img: "images/flowers/lavender.jpg",
-        images: ["images/flowers/lavender.jpg"],
+        img: "images/flowers/Olive_Lavender_Rose1.jpeg",
+        images: ["images/flowers/Olive_Lavender_Rose1.jpeg", "images/flowers/Olive_Lavender_Rose2.png", "images/flowers/Olive_Lavender_Rose3.png"],
+        videos: ["videos/flowers/OliveLavenderRoseVideo.mp4"],
         desc: "A single calming lavender stem.",
     },
     {
@@ -89,6 +90,7 @@ const PRODUCTS = [
         emoji: "🌷",
         img: "images/flowers/Bluelily1.jpeg",
         images: ["images/flowers/Bluelily1.jpeg", "images/flowers/Bluelily2.png", "images/flowers/Bluelily3.png"],
+        videos: ["videos/flowers/BlueLilyVideo.mp4"],
         desc: "A beautiful handmade blue lily that stays fresh forever, making every moment special.",
     },
     {
@@ -109,6 +111,7 @@ const PRODUCTS = [
         emoji: "🌷",
         img: "images/flowers/Orangelily1.jpeg",
         images: ["images/flowers/Orangelily1.jpeg", "images/flowers/Orangelily2.png", "images/flowers/Orangelily3.png"],
+        videos: ["videos/flowers/OrangeLilyVideo.mp4"],
         desc: "A beautiful handmade orange lily with warm sunset-inspired petals and a delicate pearl center, making it a unique and long-lasting keepsake.",
     },
     {
@@ -143,7 +146,7 @@ const PRODUCTS = [
         desc: "A cute handmade pipe cleaner mini flower keychain charm for bags or keys.",
     },
     {
-        id: "flowerKeychain",
+        id: "flowerKeychain2",
         category: "keychain",
         name: "Mini Flower Charm Keychain",
         price: 49,
@@ -164,7 +167,7 @@ const PRODUCTS = [
         desc: "A beautifully crafted pipe cleaner bloom attached to a durable hair clip.",
     },
     {
-        id: "flowerClip",
+        id: "flowerClip2",
         category: "clip",
         name: "Handmade Floral Hair Clip",
         price: 39,
@@ -406,12 +409,12 @@ themeToggleBtn.addEventListener("click", () => {
 });
 
 /* =========================================================================
-   4) AMAZON-STYLE PRODUCT MODAL LOGIC
+   4) AMAZON-STYLE PRODUCT MODAL LOGIC (IMAGES + VIDEOS)
    ========================================================================= */
 const productModal = document.getElementById("productModal");
 const modalClose = document.getElementById("modalClose");
 const modalThumbnails = document.getElementById("modalThumbnails");
-const modalMainImg = document.getElementById("modalMainImg");
+const modalMainImageWrap = document.querySelector(".modal-main-image-wrap");
 const modalTitle = document.getElementById("modalTitle");
 const modalPrice = document.getElementById("modalPrice");
 const modalDesc = document.getElementById("modalDesc");
@@ -419,12 +422,22 @@ const modalWaBtn = document.getElementById("modalWaBtn");
 const modalPrev = document.getElementById("modalPrev");
 const modalNext = document.getElementById("modalNext");
 
-let currentImageList = [];
-let currentImageIndex = 0;
+let currentMediaList = [];
+let currentMediaIndex = 0;
 
 function openModal(product) {
-    currentImageList = product.images && product.images.length ? product.images : [product.img];
-    currentImageIndex = 0;
+    currentMediaList = [];
+
+    // Combine images into media list
+    const imgs = product.images && product.images.length ? product.images : [product.img];
+    imgs.forEach(src => currentMediaList.push({ type: "image", src }));
+
+    // Append videos to media list if present
+    if (product.videos && product.videos.length) {
+        product.videos.forEach(src => currentMediaList.push({ type: "video", src }));
+    }
+
+    currentMediaIndex = 0;
 
     modalTitle.textContent = product.name;
     modalPrice.innerHTML = `₹${product.price} <small style="font-size: 0.8rem;">onwards</small>`;
@@ -442,13 +455,50 @@ function openModal(product) {
 function closeModal() {
     productModal.classList.remove("open");
     productModal.setAttribute("aria-hidden", "true");
+    
+    // Stop any playing video on close
+    const video = modalMainImageWrap.querySelector("video");
+    if (video) video.pause();
 }
 
 function updateModalGallery() {
-    modalMainImg.src = currentImageList[currentImageIndex];
+    // Remove existing image/video dynamic elements (keep navigation buttons)
+    const existingMedia = modalMainImageWrap.querySelector("img, video");
+    if (existingMedia) existingMedia.remove();
+
+    const mediaItem = currentMediaList[currentMediaIndex];
+
+    if (mediaItem.type === "image") {
+        const img = document.createElement("img");
+        img.id = "modalMainImg";
+        img.src = mediaItem.src;
+        img.alt = "Product View";
+        modalMainImageWrap.appendChild(img);
+    } else if (mediaItem.type === "video") {
+        const video = document.createElement("video");
+        video.id = "modalMainImg";
+        video.autoplay = true;
+        video.controls = true;
+        video.loop = true;
+        video.muted = true;
+        video.setAttribute("playsinline", "");
+        video.style.width = "100%";
+        video.style.height = "100%";
+        video.style.objectFit = "cover";
+
+        const source = document.createElement("source");
+        source.src = mediaItem.src;
+        source.type = "video/mp4";
+        video.appendChild(source);
+
+        modalMainImageWrap.appendChild(video);
+        video.play().catch(() => {});
+    }
+
+    // Render Thumbnails
     modalThumbnails.innerHTML = "";
 
-    if (currentImageList.length <= 1) {
+    if (currentMediaList.length <= 1) {
         modalPrev.style.display = "none";
         modalNext.style.display = "none";
     } else {
@@ -456,12 +506,20 @@ function updateModalGallery() {
         modalNext.style.display = "flex";
     }
 
-    currentImageList.forEach((imgSrc, idx) => {
-        const thumb = document.createElement("img");
-        thumb.src = imgSrc;
-        if (idx === currentImageIndex) thumb.classList.add("active");
+    currentMediaList.forEach((item, idx) => {
+        let thumb;
+        if (item.type === "image") {
+            thumb = document.createElement("img");
+            thumb.src = item.src;
+        } else {
+            thumb = document.createElement("div");
+            thumb.className = "video-thumbnail";
+            thumb.innerHTML = `<i class="fa-solid fa-play"></i>`;
+        }
+
+        if (idx === currentMediaIndex) thumb.classList.add("active");
         thumb.addEventListener("click", () => {
-            currentImageIndex = idx;
+            currentMediaIndex = idx;
             updateModalGallery();
         });
         modalThumbnails.appendChild(thumb);
@@ -469,12 +527,12 @@ function updateModalGallery() {
 }
 
 modalPrev.addEventListener("click", () => {
-    currentImageIndex = (currentImageIndex - 1 + currentImageList.length) % currentImageList.length;
+    currentMediaIndex = (currentMediaIndex - 1 + currentMediaList.length) % currentMediaList.length;
     updateModalGallery();
 });
 
 modalNext.addEventListener("click", () => {
-    currentImageIndex = (currentImageIndex + 1) % currentImageList.length;
+    currentMediaIndex = (currentMediaIndex + 1) % currentMediaList.length;
     updateModalGallery();
 });
 
