@@ -10,9 +10,9 @@ const CONFIG = {
     ownerWhatsApp: "8961224516", // EDIT: your WhatsApp number — country code + number, digits only, no + no spaces (e.g. India = 91XXXXXXXXXX)
     ownerPhoneDisplay: "+91 8961224516", // EDIT: your phone number as customers should see/dial it
     ownerAddress: "Howrah, West Bengal, India", // EDIT: Your business display address
-    facebookUrl: "https://www.facebook.com/koyel.mallick.194152", // EDIT: link to your Facebook page or post
-    instagramUrl: "https://www.instagram.com/wistful_bloom_/",
-    threadsUrl: "https://www.threads.com/@wistful_bloom_",
+    facebookUrl: "https://www.facebook.com/profile.php?id=61592627278956", // EDIT: link to your Facebook page or post
+    instagramUrl: "https://www.instagram.com/wistfulbloomshop?igsh=NGZ3ZnliYm9xcTk3&utm_source=ig_contact_invite",
+    threadsUrl: "https://www.threads.com/@wistfulbloomshop?invite=0",
 };
 
 /* =========================================================================
@@ -37,8 +37,9 @@ const PRODUCTS = [
         name: "Olive Lavender Rose",
         price: 89,
         emoji: "🌹",
-        img: "images/flowers/.jpeg",
-        images: ["images/flowers/Olive_Lavender_Rose1.jpeg", "images/flowers/Olive_Lavender_Rose2.png", "images/flowers/Olive_Lavender_Rose3.png"],
+        img: "images/flowers/OliveLavenderRose1.jpeg",
+        images: ["images/flowers/OliveLavenderRose1.jpeg", "images/flowers/OliveLavenderRose2.png", "images/flowers/OliveLavenderRose3.png"],
+        videos: ["videos/flowers/OliveLavenderRoseVideo.mp4"],
         desc: "A handmade pipe cleaner olive lavender rose, perfect for gifting or decorating any space.",
     },
     {
@@ -49,6 +50,7 @@ const PRODUCTS = [
         emoji: "🌼",
         img: "images/flowers/Purpledaisy1.jpeg",
         images: ["images/flowers/Purpledaisy1.jpeg", "images/flowers/Purpledaisy2.png", "images/flowers/Purpledaisy3.png"],
+        videos: ["videos/flowers/PurpleDaisyVideo.mp4"],
         desc: "A unique pipe cleaner flower, beautifully handcrafted for a thoughtful gift.",
     },
     {
@@ -69,7 +71,6 @@ const PRODUCTS = [
         emoji: "💜",
         img: "images/flowers/Olive_Lavender_Rose1.jpeg",
         images: ["images/flowers/Olive_Lavender_Rose1.jpeg", "images/flowers/Olive_Lavender_Rose2.png", "images/flowers/Olive_Lavender_Rose3.png"],
-        videos: ["videos/flowers/OliveLavenderRoseVideo.mp4"],
         desc: "A single calming lavender stem.",
     },
     {
@@ -101,6 +102,7 @@ const PRODUCTS = [
         emoji: "🌷",
         img: "images/flowers/Pinklily1.jpeg",
         images: ["images/flowers/Pinklily1.jpeg", "images/flowers/Pinklily2.png", "images/flowers/Pinklily3.png"],
+        videos: ["videos/flowers/PinkLilyVideo.mp4"],
         desc: "A handmade pink lily with bright pink petals and vibrant green leaves, carefully crafted to create a bold and elegant bloom that lasts forever.",
     },
     {
@@ -122,6 +124,7 @@ const PRODUCTS = [
         emoji: "🌷",
         img: "images/flowers/Pastelflower1.jpeg",
         images: ["images/flowers/Pastelflower1.jpeg", "images/flowers/Pastelflower2.png", "images/flowers/Pastelflower3.png", "images/flowers/Pastelflower4.png", "images/flowers/Pastelflower5.png"],
+        videos: ["videos/flowers/PastelFlowerVideo.mp4"],
         desc: "A handmade pastel flower featuring soft purple and mint petals with vibrant green leaves.",
     },
     {
@@ -132,6 +135,7 @@ const PRODUCTS = [
         emoji: "🌷",
         img: "images/flowers/Pinklily(design2)1.jpeg",
         images: ["images/flowers/Pinklily(design2)1.jpeg", "images/flowers/Pinklily(design2)2.png", "images/flowers/Pinklily(design2)3.png"],
+        videos: ["videos/flowers/PinkLillyVideo(design2).mp4"],
         desc: "A handmade pink lily with bright pink petals and vibrant green leaves, carefully crafted to create a bold and elegant bloom that lasts forever.",
     },
     // Keychain Sample Items
