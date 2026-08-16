@@ -7,8 +7,8 @@
         */
 const CONFIG = {
     shopName: "Wistful & Bloom", // EDIT: your shop name, shown in the header and footer
-    ownerWhatsApp: "8961224516", // EDIT: your WhatsApp number — country code + number, digits only, no + no spaces (e.g. India = 91XXXXXXXXXX)
-    ownerPhoneDisplay: "8961224516", // EDIT: your phone number as customers should see/dial it
+    ownerWhatsApp: "918961224516", // FIXED: Added country code 91 for India (digits only)
+    ownerPhoneDisplay: "+91 8961224516", // EDIT: your phone number as customers should see/dial it
     ownerAddress: "Howrah, West Bengal, India", // EDIT: Your business display address
     facebookUrl: "https://www.facebook.com/profile.php?id=61592627278956", // EDIT: link to your Facebook page or post
     instagramUrl: "https://www.instagram.com/wistfulbloomshop?igsh=NGZ3ZnliYm9xcTk3&utm_source=ig_contact_invite",
@@ -187,6 +187,15 @@ const PRODUCTS = [
            =========================================================================
         */
 
+// --- Helper function to format WhatsApp numbers safely ---
+function getCleanWhatsAppNumber(phone) {
+    let digits = phone.replace(/\D/g, "");
+    if (digits.length === 10) {
+        digits = "91" + digits; // Default to India prefix if only 10 digits are given
+    }
+    return digits;
+}
+
 // --- Fill in shop name wherever it appears ---
 document.getElementById("nav-shop-name").textContent = CONFIG.shopName;
 document.getElementById("footerShopName").textContent = CONFIG.shopName;
@@ -197,8 +206,9 @@ document.getElementById("seller-phone").textContent = CONFIG.ownerPhoneDisplay;
 document.getElementById("seller-address").textContent = CONFIG.ownerAddress;
 
 // --- Build the WhatsApp + Call contact buttons ---
+const cleanWaNumber = getCleanWhatsAppNumber(CONFIG.ownerWhatsApp);
 document.getElementById("waContactBtn").href =
-    "https://wa.me/" + CONFIG.ownerWhatsApp;
+    "https://wa.me/" + cleanWaNumber;
 document.getElementById("callBtn").href =
     "tel:" + CONFIG.ownerPhoneDisplay.replace(/\s/g, "");
 
@@ -309,7 +319,7 @@ grid.addEventListener("click", (e) => {
         const message = `Hi ${CONFIG.shopName}! I'd like to order: ${btn.dataset.product}. Could you tell me more?`;
         window.open(
             "https://wa.me/" +
-            CONFIG.ownerWhatsApp +
+            cleanWaNumber +
             "?text=" +
             encodeURIComponent(message),
             "_blank",
@@ -378,7 +388,7 @@ form.addEventListener("submit", (e) => {
     const message = lines.join("\n");
     window.open(
         "https://wa.me/" +
-        CONFIG.ownerWhatsApp +
+        cleanWaNumber +
         "?text=" +
         encodeURIComponent(message),
         "_blank",
@@ -448,7 +458,7 @@ function openModal(product) {
     modalDesc.textContent = product.desc;
 
     const message = `Hi ${CONFIG.shopName}! I'd like to order: ${product.name}. Could you tell me more?`;
-    modalWaBtn.href = "https://wa.me/" + CONFIG.ownerWhatsApp + "?text=" + encodeURIComponent(message);
+    modalWaBtn.href = "https://wa.me/" + cleanWaNumber + "?text=" + encodeURIComponent(message);
     modalWaBtn.target = "_blank";
 
     updateModalGallery();
