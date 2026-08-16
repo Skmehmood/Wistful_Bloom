@@ -8,7 +8,7 @@
 const CONFIG = {
     shopName: "Wistful & Bloom", // EDIT: your shop name, shown in the header and footer
     ownerWhatsApp: "8961224516", // EDIT: your WhatsApp number — country code + number, digits only, no + no spaces (e.g. India = 91XXXXXXXXXX)
-    ownerPhoneDisplay: "+91 8961224516", // EDIT: your phone number as customers should see/dial it
+    ownerPhoneDisplay: "8961224516", // EDIT: your phone number as customers should see/dial it
     ownerAddress: "Howrah, West Bengal, India", // EDIT: Your business display address
     facebookUrl: "https://www.facebook.com/profile.php?id=61592627278956", // EDIT: link to your Facebook page or post
     instagramUrl: "https://www.instagram.com/wistfulbloomshop?igsh=NGZ3ZnliYm9xcTk3&utm_source=ig_contact_invite",
