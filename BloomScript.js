@@ -196,6 +196,20 @@ function getCleanWhatsAppNumber(phone) {
     return digits;
 }
 
+// Helper to generate universal cross-device WhatsApp links
+function getWhatsAppUrl(phone, text = "") {
+    const cleanNum = getCleanWhatsAppNumber(phone);
+    const encodedText = encodeURIComponent(text);
+    return `https://api.whatsapp.com/send?phone=${cleanNum}&text=${encodedText}`;
+}
+
+// Universal redirection helper for all devices (Mobile, Tablet, Desktop)
+function openWhatsApp(text = "") {
+    const url = getWhatsAppUrl(CONFIG.ownerWhatsApp, text);
+    // Directly setting location prevents popup block restrictions on mobile browsers
+    window.location.href = url;
+}
+
 // --- Fill in shop name wherever it appears ---
 document.getElementById("nav-shop-name").textContent = CONFIG.shopName;
 document.getElementById("footerShopName").textContent = CONFIG.shopName;
@@ -206,11 +220,8 @@ document.getElementById("seller-phone").textContent = CONFIG.ownerPhoneDisplay;
 document.getElementById("seller-address").textContent = CONFIG.ownerAddress;
 
 // --- Build the WhatsApp + Call contact buttons ---
-const cleanWaNumber = getCleanWhatsAppNumber(CONFIG.ownerWhatsApp);
-document.getElementById("waContactBtn").href =
-    "https://wa.me/" + cleanWaNumber;
-document.getElementById("callBtn").href =
-    "tel:" + CONFIG.ownerPhoneDisplay.replace(/\s/g, "");
+document.getElementById("waContactBtn").href = getWhatsAppUrl(CONFIG.ownerWhatsApp, `Hi ${CONFIG.shopName}! I have an inquiry about your products.`);
+document.getElementById("callBtn").href = "tel:" + CONFIG.ownerPhoneDisplay.replace(/\s/g, "");
 
 // --- Render product cards + populate order form dropdown ---
 const grid = document.getElementById("productGrid");
@@ -317,13 +328,7 @@ grid.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
         const message = `Hi ${CONFIG.shopName}! I'd like to order: ${btn.dataset.product}. Could you tell me more?`;
-        window.open(
-            "https://wa.me/" +
-            cleanWaNumber +
-            "?text=" +
-            encodeURIComponent(message),
-            "_blank",
-        );
+        openWhatsApp(message);
         return;
     }
 
@@ -339,13 +344,16 @@ grid.addEventListener("click", (e) => {
 // --- Mobile menu toggle ---
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
-menuToggle.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", isOpen);
-});
-navLinks.addEventListener("click", (e) => {
-    if (e.target.tagName === "A") navLinks.classList.remove("open");
-});
+
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", isOpen);
+    });
+    navLinks.addEventListener("click", (e) => {
+        if (e.target.tagName === "A") navLinks.classList.remove("open");
+    });
+}
 
 // --- Order form: build a WhatsApp message from the entered details ---
 const form = document.getElementById("orderForm");
@@ -386,41 +394,39 @@ form.addEventListener("submit", (e) => {
     ].filter(Boolean);
 
     const message = lines.join("\n");
-    window.open(
-        "https://wa.me/" +
-        cleanWaNumber +
-        "?text=" +
-        encodeURIComponent(message),
-        "_blank",
-    );
 
     if (formMsgSuccess) formMsgSuccess.style.display = "block";
     form.reset();
+
+    // Trigger device-friendly WhatsApp navigation
+    openWhatsApp(message);
 });
 
 // --- Theme Light/Dark Switcher Feature ---
 const themeToggleBtn = document.getElementById("themeToggleBtn");
-const themeIcon = themeToggleBtn.querySelector("i");
+if (themeToggleBtn) {
+    const themeIcon = themeToggleBtn.querySelector("i");
+    const currentTheme = localStorage.getItem("theme");
 
-const currentTheme = localStorage.getItem("theme");
-if (currentTheme === "light") {
-    document.body.classList.add("light-theme");
-    themeIcon.classList.replace("fa-sun", "fa-moon");
-}
-
-themeToggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("light-theme");
-
-    let theme = "dark";
-    if (document.body.classList.contains("light-theme")) {
-        theme = "light";
-        themeIcon.classList.replace("fa-sun", "fa-moon");
-    } else {
-        themeIcon.classList.replace("fa-moon", "fa-sun");
+    if (currentTheme === "light") {
+        document.body.classList.add("light-theme");
+        if (themeIcon) themeIcon.classList.replace("fa-sun", "fa-moon");
     }
 
-    localStorage.setItem("theme", theme);
-});
+    themeToggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("light-theme");
+
+        let theme = "dark";
+        if (document.body.classList.contains("light-theme")) {
+            theme = "light";
+            if (themeIcon) themeIcon.classList.replace("fa-sun", "fa-moon");
+        } else {
+            if (themeIcon) themeIcon.classList.replace("fa-moon", "fa-sun");
+        }
+
+        localStorage.setItem("theme", theme);
+    });
+}
 
 /* =========================================================================
    4) AMAZON-STYLE PRODUCT MODAL LOGIC (IMAGES + VIDEOS)
@@ -458,8 +464,7 @@ function openModal(product) {
     modalDesc.textContent = product.desc;
 
     const message = `Hi ${CONFIG.shopName}! I'd like to order: ${product.name}. Could you tell me more?`;
-    modalWaBtn.href = "https://wa.me/" + cleanWaNumber + "?text=" + encodeURIComponent(message);
-    modalWaBtn.target = "_blank";
+    modalWaBtn.href = getWhatsAppUrl(CONFIG.ownerWhatsApp, message);
 
     updateModalGallery();
     productModal.classList.add("open");
@@ -540,17 +545,23 @@ function updateModalGallery() {
     });
 }
 
-modalPrev.addEventListener("click", () => {
-    currentMediaIndex = (currentMediaIndex - 1 + currentMediaList.length) % currentMediaList.length;
-    updateModalGallery();
-});
+if (modalPrev) {
+    modalPrev.addEventListener("click", () => {
+        currentMediaIndex = (currentMediaIndex - 1 + currentMediaList.length) % currentMediaList.length;
+        updateModalGallery();
+    });
+}
 
-modalNext.addEventListener("click", () => {
-    currentMediaIndex = (currentMediaIndex + 1) % currentMediaList.length;
-    updateModalGallery();
-});
+if (modalNext) {
+    modalNext.addEventListener("click", () => {
+        currentMediaIndex = (currentMediaIndex + 1) % currentMediaList.length;
+        updateModalGallery();
+    });
+}
 
-modalClose.addEventListener("click", closeModal);
-productModal.addEventListener("click", (e) => {
-    if (e.target === productModal) closeModal();
-});
+if (modalClose) modalClose.addEventListener("click", closeModal);
+if (productModal) {
+    productModal.addEventListener("click", (e) => {
+        if (e.target === productModal) closeModal();
+    });
+}

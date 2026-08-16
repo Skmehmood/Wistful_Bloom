@@ -28,6 +28,7 @@
     --btn-outline-text: #ffffff;
     --btn-outline-border: rgba(255, 255, 255, 0.2);
     --btn-outline-hover: rgba(255, 255, 255, 0.08);
+    --header-height: 72px;
 }
 
 /* Light Theme Variables */
@@ -52,8 +53,8 @@ body.light-theme {
 
 body.light-theme .hero {
     background: 
-        radial-gradient(circle at top right, rgba(242, 183, 5, 0.12), transparent 45%),   /* Soft Sun Glow */
-        radial-gradient(circle at bottom left, rgba(155, 126, 222, 0.1), transparent 40%), /* Soft Lavender Glow */
+        radial-gradient(circle at top right, rgba(242, 183, 5, 0.12), transparent 45%),
+        radial-gradient(circle at bottom left, rgba(155, 126, 222, 0.1), transparent 40%),
         var(--bg-main);
 }
 
@@ -63,16 +64,20 @@ body.light-theme .hero {
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     margin: 0;
+    width: 100%;
+    overflow-x: hidden;
     background: var(--bg-main);
     color: var(--text-secondary);
     font-family: "Nunito", sans-serif;
     font-size: 17px;
     line-height: 1.6;
     transition: background 0.3s ease, color 0.3s ease;
+    padding-top: var(--header-height); /* Prevents content from going under the fixed header */
 }
 
 h1, h2, h3, .display {
@@ -94,6 +99,7 @@ a {
 
 img {
     max-width: 100%;
+    height: auto;
     display: block;
 }
 
@@ -101,6 +107,7 @@ img {
     max-width: 1120px;
     margin: 0 auto;
     padding: 0 24px;
+    width: 100%;
 }
 
 section {
@@ -167,8 +174,9 @@ section {
 .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    font-family: "Nunito";
+    font-family: "Nunito", sans-serif;
     font-weight: 800;
     font-size: 1rem;
     padding: 14px 26px;
@@ -178,6 +186,8 @@ section {
     text-decoration: none;
     transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.3s ease;
     will-change: transform;
+    max-width: 100%;
+    text-align: center;
 }
 
 .btn:hover {
@@ -252,26 +262,36 @@ body:not(.light-theme) .btn-dark {
     font-size: 0.9rem;
 }
 
-/* ---------- NAV ---------- */
+/* ---------- HEADER & NAV ---------- */
 header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 50;
-    background: var(--bg-nav);
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 1000;
+    background: var(--bg-alt);
     border-bottom: 1px solid var(--border-color);
     backdrop-filter: blur(15px);
-    transition: background 0.3s ease, border 0.3s ease;
-    background: var(--bg-alt); 
-    border-bottom: 1px solid var(--shadow);
+    -webkit-backdrop-filter: blur(15px);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Remove bottom line on light theme */
+body.light-theme header {
+    border-bottom: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 24px;
+    padding: 0 24px;
+    height: 100%;
     max-width: 1120px;
     margin: 0 auto;
+    position: relative;
 }
 
 .logo {
@@ -359,19 +379,26 @@ body.light-theme #themeToggleBtn {
     color: #1a1a1a !important;
 }
 
+/* Responsive Navigation Breakpoint */
 @media (max-width: 820px) {
     .nav-links {
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--bg-main);
+        background: var(--bg-alt);
         flex-direction: column;
         gap: 0;
-        padding: 8px 24px 20px;
+        padding: 12px 24px 20px;
         border-bottom: 1px solid var(--border-color);
         display: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         animation: fadeInDown 0.3s ease forwards;
+    }
+
+    body.light-theme .nav-links {
+        border-bottom: none;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
     }
 
     .nav-links.open {
@@ -382,6 +409,10 @@ body.light-theme #themeToggleBtn {
         display: block;
         padding: 12px 0;
         border-bottom: 1px solid var(--border-color);
+    }
+
+    body.light-theme .nav-links a {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .menu-toggle {
@@ -452,7 +483,7 @@ body:not(.light-theme) .hero {
 }
 
 .hero p.lead {
-    text-align: justify;
+    text-align: left;
     font-size: 1.15rem;
     max-width: 46ch;
     color: var(--text-muted);
@@ -487,6 +518,10 @@ body:not(.light-theme) .hero {
 }
 
 @media (max-width: 820px) {
+    section {
+        padding: 56px 0;
+    }
+
     .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
@@ -495,6 +530,7 @@ body:not(.light-theme) .hero {
     .hero p.lead {
         margin-left: auto;
         margin-right: auto;
+        text-align: center;
     }
 
     .hero-actions {
@@ -502,7 +538,7 @@ body:not(.light-theme) .hero {
     }
 
     .hero-art {
-        max-width: 340px;
+        max-width: 300px;
         margin: 0 auto;
     }
 }
@@ -555,7 +591,7 @@ body.light-theme .fact {
 }
 
 .fact .num {
-    font-family: "Fredoka";
+    font-family: "Fredoka", sans-serif;
     font-size: 1.6rem;
     color: var(--sun);
     font-weight: 700;
@@ -573,6 +609,12 @@ body.light-theme .fact .num {
 
 @media (max-width: 820px) {
     .story-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 580px) {
+    .story-facts {
         grid-template-columns: 1fr;
     }
 }
@@ -647,17 +689,6 @@ body.light-theme .fact .num {
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, background 0.3s ease, border-color 0.3s ease;
 }
 
-.card-body h3 {
-    color: var(--text-primary);
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    font-weight: 700;
-    font-size: 1.3rem;
-}
-
-.card-body .desc {
-    color: var(--text-secondary);
-}
-
 .card-media {
     aspect-ratio: 4/3;
     background: linear-gradient(135deg, var(--bg-alt), var(--border-color));
@@ -682,7 +713,7 @@ body.light-theme .fact .num {
 }
 
 .card-body {
-    padding: 20px 20px 22px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -690,6 +721,9 @@ body.light-theme .fact .num {
 }
 
 .card-body h3 {
+    color: var(--text-primary);
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-weight: 700;
     font-size: 1.15rem;
     margin: 0;
 }
@@ -718,18 +752,20 @@ body.light-theme .fact .num {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 8px;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
 }
 
 .price {
     font-family: Geneva, Verdana, sans-serif;
     font-weight: 550;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     color: var(--text-primary);
 }
 
 .price small {
-    font-family: "Nunito";
+    font-family: "Nunito", sans-serif;
     font-weight: 700;
     font-size: 0.7rem;
     color: var(--sage);
@@ -744,6 +780,13 @@ body.light-theme .fact .num {
 @media (max-width: 620px) {
     .grid-products {
         grid-template-columns: 1fr;
+    }
+    .card-foot {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .card-foot .btn {
+        width: 100%;
     }
 }
 
@@ -791,7 +834,7 @@ body.light-theme .fact .num {
 }
 
 .step .step-num {
-    font-family: "Caveat";
+    font-family: "Caveat", cursive;
     font-size: 2.2rem;
     color: var(--coral);
     line-height: 1;
@@ -872,7 +915,7 @@ form.order-form {
 .field input,
 .field select,
 .field textarea {
-    font-family: "Nunito";
+    font-family: "Nunito", sans-serif;
     font-size: 1rem;
     padding: 12px 14px;
     border-radius: 10px;
@@ -880,6 +923,7 @@ form.order-form {
     background: var(--bg-input);
     color: var(--text-primary);
     transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.25s ease, transform 0.2s ease;
+    width: 100%;
 }
 
 .field input:focus,
@@ -937,7 +981,7 @@ form.order-form {
 }
 
 .seller-info-box h3 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     font-weight: 700;
     font-size: 1.1rem;
     margin-bottom: 14px;
@@ -987,6 +1031,10 @@ form.order-form {
 
     .field-row {
         grid-template-columns: 1fr;
+    }
+    
+    form.order-form {
+        padding: 20px;
     }
 }
 
@@ -1052,6 +1100,12 @@ form.order-form {
 .contact-buttons .btn-outline:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: #ffffff;
+}
+
+@media (max-width: 480px) {
+    .contact-buttons .btn {
+        width: 100%;
+    }
 }
 
 /* ---------- FOOTER ---------- */
@@ -1134,10 +1188,11 @@ body.light-theme footer a {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 1100;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 16px;
 }
 
 .modal-overlay.open {
@@ -1150,8 +1205,10 @@ body.light-theme footer a {
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    width: 90%;
+    width: 100%;
     max-width: 850px;
+    max-height: 90vh;
+    overflow-y: auto;
     padding: 24px;
     position: relative;
     color: var(--text-primary);
@@ -1316,6 +1373,7 @@ body.light-theme footer a {
     .modal-thumbnails {
         flex-direction: row;
         justify-content: center;
+        flex-wrap: wrap;
     }
 }
 
