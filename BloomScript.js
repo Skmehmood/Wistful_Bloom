@@ -25,7 +25,7 @@ const PRODUCTS = [
         id: "sunflower",
         category: "flowers",
         name: "Sunny Sunflower Stem",
-        price: 150,
+        price: 89,
         emoji: "🌻",
         img: "images/flowers/sunflower.jpg",
         images: ["images/flowers/sunflower.jpg"],
@@ -72,16 +72,6 @@ const PRODUCTS = [
         img: "images/flowers/Olive_Lavender_Rose1.jpeg",
         images: ["images/flowers/Olive_Lavender_Rose1.jpeg", "images/flowers/Olive_Lavender_Rose2.png", "images/flowers/Olive_Lavender_Rose3.png"],
         desc: "A single calming lavender stem.",
-    },
-    {
-        id: "rainbow",
-        category: "flowers",
-        name: "Rainbow Mixed Bouquet",
-        price: 600,
-        emoji: "💐",
-        img: "images/flowers/rainbow.jpg",
-        images: ["images/flowers/rainbow.jpg"],
-        desc: "A vibrant mix of every colour, made to order.",
     },
     {
         id: "Bluelily",
@@ -180,6 +170,27 @@ const PRODUCTS = [
         images: ["images/clip2.jpeg"],
         desc: "A beautifully crafted pipe cleaner bloom attached to a durable hair clip.",
     },
+    //Bouquet
+    {
+        id: "rainbow",
+        category: "bouquets",
+        name: "Rainbow Mixed Bouquet",
+        price: 599,
+        emoji: "💐",
+        img: "images/flowers/rainbow.jpg",
+        images: ["images/flowers/rainbow.jpg"],
+        desc: "A vibrant mix of every colour, made to order.",
+    },
+    {
+        id: "rainbow",
+        category: "bouquets",
+        name: "Rainbow Mixed Bouquet",
+        price: 499,
+        emoji: "💐",
+        img: "images/flowers/rainbow.jpg",
+        images: ["images/flowers/rainbow.jpg"],
+        desc: "A vibrant mix of every colour, made to order.",
+    }
 ];
 
 /* =========================================================================
