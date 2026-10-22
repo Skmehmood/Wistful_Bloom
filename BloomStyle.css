@@ -203,15 +203,16 @@ section {
     outline-offset: 3px;
 }
 
-.btn-primary {
-    background: var(--coral);
-    color: #fff;
-    box-shadow: 0 8px 20px rgba(255, 119, 168, 0.25);
+/* Base Button Styling (Shared Properties) */
+.btn {
     position: relative;
     overflow: hidden;
 }
 
-.btn-primary::after {
+/* Shine effect pseudo-element for ALL button types */
+.btn-primary::after,
+.btn-outline::after,
+.btn-dark::after {
     content: '';
     position: absolute;
     top: -50%;
@@ -224,8 +225,18 @@ section {
     pointer-events: none;
 }
 
-.btn-primary:hover::after {
+/* Shine animation trigger on hover for ALL button types */
+.btn-primary:hover::after,
+.btn-outline:hover::after,
+.btn-dark:hover::after {
     transform: rotate(30deg) translate(300%, -50%);
+}
+
+/* Primary Button */
+.btn-primary {
+    background: var(--coral);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(255, 119, 168, 0.25);
 }
 
 .btn-primary:hover {
@@ -233,6 +244,7 @@ section {
     box-shadow: 0 12px 25px rgba(255, 119, 168, 0.4);
 }
 
+/* Outline Button */
 .btn-outline {
     background: transparent;
     color: var(--btn-outline-text);
@@ -242,11 +254,14 @@ section {
 .btn-outline:hover {
     background: var(--btn-outline-hover);
     border-color: var(--btn-outline-text);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
 }
 
+/* Dark Button */
 .btn-dark {
     background: var(--moss);
     color: var(--text-primary);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 body:not(.light-theme) .btn-dark {
@@ -255,8 +270,10 @@ body:not(.light-theme) .btn-dark {
 
 .btn-dark:hover {
     background: var(--moss-dark);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
 }
 
+/* Small Button Modifier */
 .btn-sm {
     padding: 10px 18px;
     font-size: 0.9rem;
