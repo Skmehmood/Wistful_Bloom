@@ -1,25 +1,19 @@
 /* =========================================================================
            1) CONFIG — EDIT THIS SECTION WITH YOUR OWN DETAILS
-           =========================================================================
-           This is the ONLY part of the file you should need to change to make the
-           site fully yours. Replace the text inside the quotes " " on each line.
-           Do not delete the commas or quotation marks.
-        */
+           ========================================================================= */
 const CONFIG = {
-    shopName: "Wistful & Bloom", // EDIT: your shop name, shown in the header and footer
-    ownerWhatsApp: "918961224516", // FIXED: Added country code 91 for India (digits only)
-    ownerPhoneDisplay: "+91 8961224516", // EDIT: your phone number as customers should see/dial it
-    ownerAddress: "Howrah, West Bengal, India", // EDIT: Your business display address
-    facebookUrl: "https://www.facebook.com/profile.php?id=61592627278956", // EDIT: link to your Facebook page or post
+    shopName: "Wistful & Bloom",
+    ownerWhatsApp: "918961224516", 
+    ownerPhoneDisplay: "+91 8961224516",
+    ownerAddress: "Howrah, West Bengal, India",
+    facebookUrl: "https://www.facebook.com/profile.php?id=61592627278956",
     instagramUrl: "https://www.instagram.com/wistfulbloomshop?igsh=NGZ3ZnliYm9xcTk3&utm_source=ig_contact_invite",
     threadsUrl: "https://www.threads.com/@wistfulbloomshop?invite=0",
 };
 
 /* =========================================================================
            2) PRODUCTS — EDIT, ADD, OR REMOVE ITEMS HERE
-           =========================================================================
-           Categories added: "flowers", "keychain", "clip"
-        */
+           ========================================================================= */
 const PRODUCTS = [
     {
         id: "sunflower",
@@ -104,7 +98,7 @@ const PRODUCTS = [
         img: "images/flowers/Orangelily1.jpeg",
         images: ["images/flowers/Orangelily1.jpeg", "images/flowers/Orangelily2.png", "images/flowers/Orangelily3.png"],
         videos: ["videos/flowers/OrangeLilyVideo.mp4"],
-        desc: "A beautiful handmade orange lily with warm sunset-inspired petals and a delicate pearl center, making it a unique and long-lasting keepsake.",
+        desc: "A beautiful handmade orange lily with warm sunset-inspired petals and a delicate pearl center.",
     },
     {
         id: "Pastelflower",
@@ -126,9 +120,9 @@ const PRODUCTS = [
         img: "images/flowers/Pinklily(design2)1.jpeg",
         images: ["images/flowers/Pinklily(design2)1.jpeg", "images/flowers/Pinklily(design2)2.png", "images/flowers/Pinklily(design2)3.png"],
         videos: ["videos/flowers/PinkLillyVideo(design2).mp4"],
-        desc: "A handmade pink lily with bright pink petals and vibrant green leaves, carefully crafted to create a bold and elegant bloom that lasts forever.",
+        desc: "A handmade pink lily with bright pink petals and vibrant green leaves.",
     },
-    // Keychain Sample Items
+    // Keychain Items
     {
         id: "flowerKeychain",
         category: "keychain",
@@ -140,16 +134,17 @@ const PRODUCTS = [
         desc: "A cute handmade pipe cleaner mini flower keychain charm for bags or keys.",
     },
     {
-        id: "flowerKeychain2",
+        id: "jerseyKeychain",
         category: "keychain",
-        name: "Mini Flower Charm Keychain",
-        price: 49,
+        name: "Dhoni CSK Woolen Jersey Keychain",
+        price: 99,
         emoji: "🔑",
-        img: "images/keychain2.jpeg",
-        images: ["images/keychain2.jpeg"],
-        desc: "A cute handmade pipe cleaner mini flower keychain charm for bags or keys.",
+        img: "images/keychains/MahiCSK1.png",
+        images: ["images/keychains/MahiCSK1.png", "images/keychains/MahiCSK2.png", "images/keychains/MahiCSK3.png", "images/keychains/MahiCSK4.png", "images/keychains/MahiCSK5.png"],
+        videos: ["videos/keychains/MahiCSKVideo.mp4"],
+        desc: "A charming, hand-stitched mini woolen CSK jersey keychain featuring Dhoni's iconic number 7.",
     },
-    // Clip Sample Items
+    // Clip Items
     {
         id: "flowerClip",
         category: "clip",
@@ -170,71 +165,245 @@ const PRODUCTS = [
         images: ["images/clip2.jpeg"],
         desc: "A beautifully crafted pipe cleaner bloom attached to a durable hair clip.",
     },
-    //Bouquet
+    // Bouquets
     {
         id: "rainbow",
         category: "bouquets",
         name: "Rainbow Mixed Bouquet",
         price: 599,
         emoji: "💐",
-        img: "images/flowers/rainbow.jpg",
-        images: ["images/flowers/rainbow.jpg"],
+        img: "images/bouquets/rainbow.jpeg",
+        images: ["images/bouquets/rainbow.jpeg"],
         desc: "A vibrant mix of every colour, made to order.",
     },
     {
-        id: "rainbow",
+        id: "customize",
         category: "bouquets",
-        name: "Rainbow Mixed Bouquet",
+        name: "Birthday Special (Customize)",
         price: 499,
         emoji: "💐",
-        img: "images/flowers/rainbow.jpg",
-        images: ["images/flowers/rainbow.jpg"],
-        desc: "A vibrant mix of every colour, made to order.",
+        img: "images/bouquets/forbirthday.jpeg",
+        images: ["images/bouquets/forbirthday.jpeg"],
+        desc: "Customize for birthday.",
+    },
+    {
+        id: "normal1",
+        category: "bouquets",
+        name: "Normal Bouquet",
+        price: 259,
+        emoji: "💐",
+        img: "images/bouquets/normal1.jpeg",
+        images: ["images/bouquets/normal1.jpeg"],
+        desc: "For normal season.",
+    },
+    {
+        id: "normal2",
+        category: "bouquets",
+        name: "Normal Bouquet",
+        price: 259,
+        emoji: "💐",
+        img: "images/bouquets/normal2.jpeg",
+        images: ["images/bouquets/normal2.jpeg"],
+        desc: "For normal season.",
     }
 ];
 
 /* =========================================================================
-           3) EVERYTHING BELOW THIS LINE MAKES THE PAGE WORK.
-           =========================================================================
-        */
+   3) AUTOMATIC SEASONAL & EVENT MANAGER (15-20 Days Prior Display)
+   ========================================================================= */
+const seasonalEvents = [
+    {
+        id: "durga_puja",
+        name: "Durga Puja Specials 🪔",
+        badge: "Durga Puja Collection",
+        description: "Handmade festive marigold & lotus pipe cleaner stems for Agamani vibes!",
+        startDate: new Date(new Date().getFullYear(), 8, 15), 
+        endDate: new Date(new Date().getFullYear(), 9, 15),
+        products: [
+            { 
+                name: "Divine Red Lotus Stem", 
+                price: "₹199", 
+                numericPrice: 199, 
+                desc: "Hand-crafted red pipe cleaner lotus bloom for puja decoration.", 
+                emoji: "🪷", 
+                category: "festive"
+            },
+            { 
+                name: "Golden Marigold Garland (Genda Phool)", 
+                price: "₹349", 
+                numericPrice: 349, 
+                desc: "Never-fading fluffy marigold stems for your home mandir.", 
+                emoji: "🌼", 
+                category: "festive" 
+            }
+        ]
+    },
+    {
+        id: "diwali",
+        name: "Diwali Lights & Blooms 🪔",
+        badge: "Diwali Special",
+        description: "Bright golden & glowing pipe cleaner bouquets to brighten your Deepawali!",
+        startDate: new Date(new Date().getFullYear(), 9, 10), 
+        endDate: new Date(new Date().getFullYear(), 10, 5),
+        products: [
+            { 
+                name: "Golden Sunburst Diya Bouquet", 
+                price: "₹499", 
+                numericPrice: 499, 
+                desc: "Bright yellow and orange pipe cleaner bouquet with sparkling wire centers.", 
+                emoji: "✨", 
+                category: "festive" 
+            },
+            { 
+                name: "Festive Marigold & Rose Combo", 
+                price: "₹399", 
+                numericPrice: 399, 
+                desc: "Long-lasting handmade flower arrangement for Diwali decor.", 
+                emoji: "🪔", 
+                category: "festive" 
+            }
+        ]
+    },
+    {
+        id: "christmas_newyear",
+        name: "Christmas & New Year Wonders 🎄",
+        badge: "Holiday Season",
+        description: "Cozy red, white & holly green stem arrangements for the holidays!",
+        startDate: new Date(new Date().getFullYear(), 11, 5), 
+        endDate: new Date(new Date().getFullYear() + 1, 0, 5),
+        products: [
+            { 
+                name: "Poinsettia Red Velvet Stem", 
+                price: "₹249", 
+                numericPrice: 249, 
+                desc: "Classic Christmas red poinsettia flower twisted stem by stem.", 
+                emoji: "🎄", 
+                category: "festive" 
+            },
+            { 
+                name: "Winter Berry & Holly Bouquet", 
+                price: "₹450", 
+                numericPrice: 450, 
+                desc: "Festive green pine needles & red pipe cleaner berries.", 
+                emoji: "❄️", 
+                category: "festive" 
+            }
+        ]
+    },
+    {
+        id: "valentines",
+        name: "Valentine's Love Blooms 💖",
+        badge: "Valentine's Special",
+        description: "Forever roses that never wilt for your special someone!",
+        startDate: new Date(new Date().getFullYear(), 0, 25), 
+        endDate: new Date(new Date().getFullYear(), 1, 16),
+        products: [
+            { 
+                name: "Forever Red Velvet Rose", 
+                price: "₹299", 
+                numericPrice: 299, 
+                desc: "A single luxury handmade red rose stem that lasts forever.", 
+                emoji: "🌹", 
+                category: "festive" 
+            },
+            { 
+                name: "Sweetheart Pink Blossom Bunch", 
+                price: "₹599", numericPrice: 599, 
+                desc: "Soft pink and lavender pipe cleaner flower arrangement.", 
+                emoji: "💌", 
+                category: "festive" 
+            }
+        ]
+    }
+];
 
-// --- Helper function to format WhatsApp numbers safely ---
+let activeEventProducts = [];
+
+function renderSeasonalSection() {
+    const today = new Date();
+    const activeEvent = seasonalEvents.find(event => today >= event.startDate && today <= event.endDate);
+
+    const eventSection = document.getElementById("eventSection");
+    const eventDivider = document.getElementById("eventDivider");
+    const productGrid = document.getElementById("eventProductGrid");
+
+    if (!activeEvent) {
+        if (eventSection) eventSection.style.display = "none";
+        if (eventDivider) eventDivider.style.display = "none";
+        activeEventProducts = [];
+        return;
+    }
+
+    if (eventSection) eventSection.style.display = "block";
+    if (eventDivider) eventDivider.style.display = "block";
+
+    document.getElementById("eventBadge").textContent = activeEvent.badge;
+    document.getElementById("eventTitle").textContent = activeEvent.name;
+    document.getElementById("eventDescription").textContent = activeEvent.description;
+
+    activeEventProducts = activeEvent.products;
+
+    productGrid.innerHTML = activeEvent.products.map(prod => `
+        <div class="card event_card">
+            <span class="event_badge_tag">Festive Exclusive</span>
+            <div class="card_media">
+                <span class="placeholder_emoji">${prod.emoji}</span>
+            </div>
+            <div class="card_body">
+                <h3>${prod.name}</h3>
+                <p class="desc">${prod.desc}</p>
+                <div class="card_foot">
+                    <span class="price">${prod.price} <small>/ stem</small></span>
+                    <a href="#order" class="btn btn_primary btn_sm" onclick="selectEventProduct('${prod.name}')">Order Now</a>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function selectEventProduct(productName) {
+    if (formCategorySelect) {
+        formCategorySelect.value = "festive";
+        updateProductDropdown("festive");
+    }
+    
+    if (productSelect) {
+        productSelect.value = productName;
+    }
+}
+
+/* =========================================================================
+   4) GENERAL UTILITIES & SHOP LOGIC
+   ========================================================================= */
 function getCleanWhatsAppNumber(phone) {
     let digits = phone.replace(/\D/g, "");
     if (digits.length === 10) {
-        digits = "91" + digits; // Default to India prefix if only 10 digits are given
+        digits = "91" + digits;
     }
     return digits;
 }
 
-// Helper to generate universal cross-device WhatsApp links
 function getWhatsAppUrl(phone, text = "") {
     const cleanNum = getCleanWhatsAppNumber(phone);
     const encodedText = encodeURIComponent(text);
     return `https://api.whatsapp.com/send?phone=${cleanNum}&text=${encodedText}`;
 }
 
-// Universal redirection helper for all devices (Mobile, Tablet, Desktop)
 function openWhatsApp(text = "") {
     const url = getWhatsAppUrl(CONFIG.ownerWhatsApp, text);
-    // Directly setting location prevents popup block restrictions on mobile browsers
     window.location.href = url;
 }
 
-// --- Fill in shop name wherever it appears ---
-document.getElementById("nav-shop-name").textContent = CONFIG.shopName;
+document.getElementById("nav_shop_name").textContent = CONFIG.shopName;
 document.getElementById("footerShopName").textContent = CONFIG.shopName;
 document.title = CONFIG.shopName + " - Handmade Pipe Cleaner Creations";
 
-// --- Fill in dynamic seller details in the order info block ---
 document.getElementById("seller-phone").textContent = CONFIG.ownerPhoneDisplay;
 document.getElementById("seller-address").textContent = CONFIG.ownerAddress;
 
-// --- Build the WhatsApp + Call contact buttons ---
 document.getElementById("waContactBtn").href = getWhatsAppUrl(CONFIG.ownerWhatsApp, `Hi ${CONFIG.shopName}! I have an inquiry about your products.`);
 document.getElementById("callBtn").href = "tel:" + CONFIG.ownerPhoneDisplay.replace(/\s/g, "");
 
-// --- Render product cards + populate order form dropdown ---
 const grid = document.getElementById("productGrid");
 const productSelect = document.getElementById("product");
 const formCategorySelect = document.getElementById("formCategory");
@@ -242,30 +411,34 @@ const formCategorySelect = document.getElementById("formCategory");
 function renderProducts(category = "all") {
     grid.innerHTML = "";
     
-    const filteredProducts = category === "all" 
-        ? PRODUCTS 
-        : PRODUCTS.filter(p => p.category === category);
+    let filteredProducts = [];
+    if (category === "all") {
+        filteredProducts = PRODUCTS;
+    } else if (category === "festive") {
+        filteredProducts = activeEventProducts;
+    } else {
+        filteredProducts = PRODUCTS.filter(p => p.category === category);
+    }
 
     filteredProducts.forEach((p) => {
-        // Product card
         const card = document.createElement("div");
-        card.className = "card";
-        card.setAttribute("data-id", p.id);
-        card.setAttribute("data-category", p.category);
+        card.className = category === "festive" ? "card event_card" : "card";
+        card.setAttribute("data-id", p.id || p.name);
+        card.setAttribute("data-category", category);
         card.innerHTML = `
-        <div class="card-media">
-          <img src="${p.img}" alt="${p.name}" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="placeholder-emoji" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">
+        ${category === "festive" ? '<span class="event_badge_tag">Festive Exclusive</span>' : ''}
+        <div class="card_media">
+          ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` : ''}
+          <div class="placeholder_emoji" style="${p.img ? 'display:none;' : 'display:flex;'} align-items:center; justify-content:center; width:100%; height:100%;">
             ${p.emoji}
           </div>
         </div>
-        <div class="card-body">
+        <div class="card_body">
           <h3>${p.name}</h3>
           <p class="desc">${p.desc}</p>
-          <div class="card-foot">
-            <div class="price">₹${p.price} <small>onwards</small></div>
-            <a class="btn btn-dark btn-sm" href="#" data-product="${p.name}">Order on WhatsApp</a>
+          <div class="card_foot">
+            <div class="price">${p.price} <small>${category === "festive" ? '/ stem' : 'onwards'}</small></div>
+            <a class="btn btn_dark btn_sm" href="#" data-product="${p.name}">Order on WhatsApp</a>
           </div>
         </div>
       `;
@@ -274,30 +447,34 @@ function renderProducts(category = "all") {
 }
 
 function updateProductDropdown(category = "all") {
-    // Clear dynamic options (keep default option and Custom option)
     productSelect.innerHTML = `
         <option value="" disabled selected>Select an option</option>
         <option value="Custom / Other (see notes)">Custom / Other (see notes)</option>
     `;
 
-    const filteredProducts = category === "all" 
-        ? PRODUCTS 
-        : PRODUCTS.filter(p => p.category === category);
+    let targetProducts = [];
+    if (category === "all") {
+        targetProducts = [...PRODUCTS, ...activeEventProducts];
+    } else if (category === "festive") {
+        targetProducts = activeEventProducts;
+    } else {
+        targetProducts = PRODUCTS.filter(p => p.category === category);
+    }
 
-    filteredProducts.forEach((p) => {
+    targetProducts.forEach((p) => {
         const opt = document.createElement("option");
         opt.value = p.name;
-        opt.textContent = p.name + " - ₹" + p.price;
+        opt.textContent = p.name + " - " + p.price;
         productSelect.insertBefore(opt, productSelect.lastElementChild);
     });
 }
 
-// Initial render
+// Initial renders
+renderSeasonalSection();
 renderProducts("all");
 updateProductDropdown("all");
 
-// --- Category Filtering Event Listeners (Shop Section) ---
-const filterButtons = document.querySelectorAll(".filter-btn");
+const filterButtons = document.querySelectorAll(".filter_btn");
 filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
         filterButtons.forEach((b) => b.classList.remove("active"));
@@ -306,7 +483,6 @@ filterButtons.forEach((btn) => {
         const selectedCategory = btn.getAttribute("data-category");
         renderProducts(selectedCategory);
 
-        // Synchronize category dropdown in order form
         if (formCategorySelect) {
             formCategorySelect.value = selectedCategory;
             updateProductDropdown(selectedCategory);
@@ -314,13 +490,11 @@ filterButtons.forEach((btn) => {
     });
 });
 
-// Category Dropdown Change Listener (Order Form Section)
 if (formCategorySelect) {
     formCategorySelect.addEventListener("change", (e) => {
         const selectedCategory = e.target.value;
         updateProductDropdown(selectedCategory);
 
-        // Synchronize Shop Category Buttons
         filterButtons.forEach((b) => {
             if (b.getAttribute("data-category") === selectedCategory) {
                 b.classList.add("active");
@@ -332,7 +506,6 @@ if (formCategorySelect) {
     });
 }
 
-// --- Quick "Order on WhatsApp" buttons on each product card ---
 grid.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-product]");
     if (btn) {
@@ -343,16 +516,14 @@ grid.addEventListener("click", (e) => {
         return;
     }
 
-    // Open Modal Viewer when clicking on product card/media
     const card = e.target.closest(".card");
     if (card) {
         const productId = card.getAttribute("data-id");
-        const product = PRODUCTS.find((p) => p.id === productId);
+        const product = PRODUCTS.find((p) => p.id === productId || p.name === productId);
         if (product) openModal(product);
     }
 });
 
-// --- Mobile menu toggle ---
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
@@ -366,17 +537,14 @@ if (menuToggle && navLinks) {
     });
 }
 
-// --- Order form: build a WhatsApp message from the entered details ---
 const form = document.getElementById("orderForm");
 const formMsgSuccess = document.getElementById("formMsgSuccess");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // Force the quantity to be an integer, fallback to 1 if empty
     const rawQuantity = parseInt(form.quantity.value, 10) || 1;
     const safeQuantity = Math.max(1, rawQuantity);
-
     const categoryText = formCategorySelect.options[formCategorySelect.selectedIndex].text;
 
     const data = {
@@ -408,27 +576,24 @@ form.addEventListener("submit", (e) => {
 
     if (formMsgSuccess) formMsgSuccess.style.display = "block";
     form.reset();
-
-    // Trigger device-friendly WhatsApp navigation
     openWhatsApp(message);
 });
 
-// --- Theme Light/Dark Switcher Feature ---
 const themeToggleBtn = document.getElementById("themeToggleBtn");
 if (themeToggleBtn) {
     const themeIcon = themeToggleBtn.querySelector("i");
     const currentTheme = localStorage.getItem("theme");
 
     if (currentTheme === "light") {
-        document.body.classList.add("light-theme");
+        document.body.classList.add("light_theme");
         if (themeIcon) themeIcon.classList.replace("fa-sun", "fa-moon");
     }
 
     themeToggleBtn.addEventListener("click", () => {
-        document.body.classList.toggle("light-theme");
+        document.body.classList.toggle("light_theme");
 
         let theme = "dark";
-        if (document.body.classList.contains("light-theme")) {
+        if (document.body.classList.contains("light_theme")) {
             theme = "light";
             if (themeIcon) themeIcon.classList.replace("fa-sun", "fa-moon");
         } else {
@@ -440,12 +605,12 @@ if (themeToggleBtn) {
 }
 
 /* =========================================================================
-   4) AMAZON-STYLE PRODUCT MODAL LOGIC (IMAGES + VIDEOS)
+   5) AMAZON-STYLE PRODUCT MODAL LOGIC (IMAGES + VIDEOS)
    ========================================================================= */
 const productModal = document.getElementById("productModal");
 const modalClose = document.getElementById("modalClose");
 const modalThumbnails = document.getElementById("modalThumbnails");
-const modalMainImageWrap = document.querySelector(".modal-main-image-wrap");
+const modalMainImageWrap = document.querySelector(".modal_main_image_wrap");
 const modalTitle = document.getElementById("modalTitle");
 const modalPrice = document.getElementById("modalPrice");
 const modalDesc = document.getElementById("modalDesc");
@@ -459,11 +624,9 @@ let currentMediaIndex = 0;
 function openModal(product) {
     currentMediaList = [];
 
-    // Combine images into media list
-    const imgs = product.images && product.images.length ? product.images : [product.img];
+    const imgs = product.images && product.images.length ? product.images : (product.img ? [product.img] : []);
     imgs.forEach(src => currentMediaList.push({ type: "image", src }));
 
-    // Append videos to media list if present
     if (product.videos && product.videos.length) {
         product.videos.forEach(src => currentMediaList.push({ type: "video", src }));
     }
@@ -471,7 +634,7 @@ function openModal(product) {
     currentMediaIndex = 0;
 
     modalTitle.textContent = product.name;
-    modalPrice.innerHTML = `₹${product.price} <small style="font-size: 0.8rem;">onwards</small>`;
+    modalPrice.innerHTML = `${product.price} <small style="font-size: 0.8rem;">onwards</small>`;
     modalDesc.textContent = product.desc;
 
     const message = `Hi ${CONFIG.shopName}! I'd like to order: ${product.name}. Could you tell me more?`;
@@ -486,15 +649,29 @@ function closeModal() {
     productModal.classList.remove("open");
     productModal.setAttribute("aria-hidden", "true");
     
-    // Stop any playing video on close
     const video = modalMainImageWrap.querySelector("video");
     if (video) video.pause();
 }
 
 function updateModalGallery() {
-    // Remove existing image/video dynamic elements (keep navigation buttons)
     const existingMedia = modalMainImageWrap.querySelector("img, video");
     if (existingMedia) existingMedia.remove();
+
+    if (currentMediaList.length === 0) {
+        const placeholder = document.createElement("div");
+        placeholder.style.display = "flex";
+        placeholder.style.alignItems = "center";
+        placeholder.style.justifyContent = "center";
+        placeholder.style.width = "100%";
+        placeholder.style.height = "100%";
+        placeholder.style.fontSize = "4rem";
+        placeholder.textContent = "🎁";
+        modalMainImageWrap.appendChild(placeholder);
+        modalThumbnails.innerHTML = "";
+        modalPrev.style.display = "none";
+        modalNext.style.display = "none";
+        return;
+    }
 
     const mediaItem = currentMediaList[currentMediaIndex];
 
@@ -525,7 +702,6 @@ function updateModalGallery() {
         video.play().catch(() => {});
     }
 
-    // Render Thumbnails
     modalThumbnails.innerHTML = "";
 
     if (currentMediaList.length <= 1) {
@@ -543,7 +719,7 @@ function updateModalGallery() {
             thumb.src = item.src;
         } else {
             thumb = document.createElement("div");
-            thumb.className = "video-thumbnail";
+            thumb.className = "video_thumbnail";
             thumb.innerHTML = `<i class="fa-solid fa-play"></i>`;
         }
 

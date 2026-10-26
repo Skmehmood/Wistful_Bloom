@@ -21,7 +21,7 @@
 <body>
     <!-- Hidden SVG filter that gives every "wire divider" its fuzzy, chenille-stem texture -->
     <svg width="0" height="0" style="position: absolute">
-        <filter id="fuzzy-filter" x="-20%" y="-200%" width="140%" height="500%">
+        <filter id="fuzzy_filter" x="-20%" y="-200%" width="140%" height="500%">
             <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise" />
             <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" />
         </filter>
@@ -32,30 +32,30 @@
         <nav class="nav">
             <a href="#top" class="logo">
                 <img src="images/LogoRound.png" alt="" style="height: 45px; width: 45px;" />
-                <span id="nav-shop-name">Wistful &amp; Bloom</span>
+                <span id="nav_shop_name">Wistful &amp; Bloom</span>
             </a>
 
-            <div class="nav-actions-wrapper" style="display: flex; align-items: center; gap: 15px;">
+            <div class="nav_actions_wrapper" style="display: flex; align-items: center; gap: 15px;">
                 <!-- Theme Toggle Button -->
-                <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme"
+                <button id="themeToggleBtn" class="theme_toggle_btn" aria-label="Toggle Theme"
                     style="background: none; border: none; font-size: 1.3rem; cursor: pointer; color: white;">
                     <i class="fa-solid fa-sun"></i>
                 </button>
 
-                <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+                <button class="menu_toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
                     &#9776;
                 </button>
             </div>
 
-            <ul class="nav-links" id="navLinks">
+            <ul class="nav_links" id="navLinks">
                 <li><a href="#shop">Shop</a></li>
                 <li><a href="#story">Our Story</a></li>
                 <li><a href="#how">How to Order</a></li>
                 <li><a href="#order">Order Form</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="nav-cta">
-                <a href="#order" class="btn btn-primary btn-sm" style="padding: 9px 17px;">Order Now</a>
+            <div class="nav_cta">
+                <a href="#order" class="btn btn_primary btn_sm" style="padding: 9px 17px;">Order Now</a>
             </div>
         </nav>
     </header>
@@ -63,7 +63,7 @@
     <!-- ============================= HERO ============================= -->
     <main id="top">
         <section class="hero">
-            <div class="wrap hero-grid">
+            <div class="wrap hero_grid">
                 <div>
                     <span class="eyebrow">100% Handmade &middot; Made to Order</span>
                     <h1>
@@ -79,12 +79,12 @@
                         we offer high-quality handmade products at prices that are truly affordable. 
                         Thank you for supporting handmade art and small businesses!
                     </p>
-                    <div class="hero-actions">
-                        <a href="#shop" class="btn btn-primary">See the Flowers</a>
-                        <a href="#order" class="btn btn-dark">Order on WhatsApp</a>
+                    <div class="hero_actions">
+                        <a href="#shop" class="btn btn_primary">See the Flowers</a>
+                        <a href="#order" class="btn btn_dark">Order on WhatsApp</a>
                     </div>
                 </div>
-                <div class="hero-art" aria-hidden="true">
+                <div class="hero_art" aria-hidden="true">
                     <svg viewBox="0 0 400 400">
                         <g stroke-linecap="round" fill="none">
                             <path d="M200 380 C 150 320, 250 260, 200 200" stroke="#7C9473" stroke-width="7" />
@@ -104,29 +104,50 @@
             </div>
         </section>
 
-        <div class="wire-divider" aria-hidden="true">
+        <div class="wire_divider" aria-hidden="true">
             <svg viewBox="0 0 1440 44" preserveAspectRatio="none">
-                <path class="wire-path" stroke="#E8527A"
+                <path class="wire_path" stroke="#E8527A"
+                    d="M0,22 C 60,2 120,42 180,22 C240,2 300,42 360,22 C420,2 480,42 540,22 C600,2 660,42 720,22 C780,2 840,42 900,22 C960,2 1020,42 1080,22 C1140,2 1200,42 1260,22 C1320,2 1380,42 1440,22" />
+            </svg>
+        </div>
+
+        <!-- ============================= SEASONAL / EVENT SECTION ============================= -->
+        <section class="event_section" id="eventSection" style="display: none;">
+            <div class="wrap">
+                <div class="shop_head">
+                    <span class="eyebrow eyebrow_yellow" id="eventBadge">Festive Special</span>
+                    <h2 id="eventTitle">Upcoming Special Collection</h2>
+                    <p id="eventDescription">Handcrafted blooms specially designed for the upcoming occasion!</p>
+                </div>
+                <div class="grid_products" id="eventProductGrid">
+                    <!-- Dynamic seasonal event products loaded via JS -->
+                </div>
+            </div>
+        </section>
+
+        <div class="wire_divider" id="eventDivider" style="display: none;" aria-hidden="true">
+            <svg viewBox="0 0 1440 44" preserveAspectRatio="none">
+                <path class="wire_path" stroke="#FFC857"
                     d="M0,22 C 60,2 120,42 180,22 C240,2 300,42 360,22 C420,2 480,42 540,22 C600,2 660,42 720,22 C780,2 840,42 900,22 C960,2 1020,42 1080,22 C1140,2 1200,42 1260,22 C1320,2 1380,42 1440,22" />
             </svg>
         </div>
 
         <!-- ============================= STORY ============================= -->
         <section class="story" id="story">
-            <div class="wrap story-grid">
+            <div class="wrap story_grid">
                 <div>
                     <span class="eyebrow" style="background: rgba(242, 183, 5, 0.18); color: #f2b705">Our Story</span>
                     <h2>A little bit of craft, a lot of heart.</h2>
                 </div>
                 <div>
-                    <p id="story-text" class="story-text">
+                    <p id="story-text" class="story_text">
                         What started as a way to relax with a few colourful pipe cleaners
                         turned into a small flower shop that never needs watering. Every
                         stem, petal and bouquet you see here is twisted and shaped
                         entirely by hand - no two are ever perfectly identical, and that's
                         the charm of it.
                     </p>
-                    <div class="story-facts">
+                    <div class="story_facts">
                         <div class="fact">
                             <div class="num">100%</div>
                             <div class="label">Handmade</div>
@@ -144,9 +165,9 @@
             </div>
         </section>
 
-        <div class="wire-divider" aria-hidden="true">
+        <div class="wire_divider" aria-hidden="true">
             <svg viewBox="0 0 1440 44" preserveAspectRatio="none">
-                <path class="wire-path" stroke="#F2B705"
+                <path class="wire_path" stroke="#F2B705"
                     d="M0,22 C 60,2 120,42 180,22 C240,2 300,42 360,22 C420,2 480,42 540,22 C600,2 660,42 720,22 C780,2 840,42 900,22 C960,2 1020,42 1080,22 C1140,2 1200,42 1260,22 C1320,2 1380,42 1440,22" />
             </svg>
         </div>
@@ -154,7 +175,7 @@
         <!-- ============================= SHOP ============================= -->
         <section class="shop" id="shop">
             <div class="wrap">
-                <div class="shop-head">
+                <div class="shop_head">
                     <span class="eyebrow">The Shop</span>
                     <h2>Pick your favourite item</h2>
                     <p>
@@ -162,22 +183,22 @@
                     </p>
                     
                     <!-- Sub-section category filters -->
-                    <div class="category-filters" id="categoryFilters">
-                        <button class="filter-btn active" data-category="all">All Items</button>
-                        <button class="filter-btn" data-category="flowers">Flowers</button>
-                        <button class="filter-btn" data-category="keychain">Keychain</button>
-                        <button class="filter-btn" data-category="clip">Clip</button>
-                        <button class="filter-btn" data-category="bouquets">Bouquets</button>
+                    <div class="category_filters" id="categoryFilters">
+                        <button class="filter_btn active" data-category="all">All Items</button>
+                        <button class="filter_btn" data-category="flowers">Flowers</button>
+                        <button class="filter_btn" data-category="keychain">Keychain</button>
+                        <button class="filter_btn" data-category="clip">Clip</button>
+                        <button class="filter_btn" data-category="bouquets">Bouquets</button>
                     </div>
                 </div>
-                <div class="grid-products" id="productGrid">
+                <div class="grid_products" id="productGrid">
                 </div>
             </div>
         </section>
 
-        <div class="wire-divider" aria-hidden="true">
+        <div class="wire_divider" aria-hidden="true">
             <svg viewBox="0 0 1440 44" preserveAspectRatio="none">
-                <path class="wire-path" stroke="#9B7EDE"
+                <path class="wire_path" stroke="#9B7EDE"
                     d="M0,22 C 60,2 120,42 180,22 C240,2 300,42 360,22 C420,2 480,42 540,22 C600,2 660,42 720,22 C780,2 840,42 900,22 C960,2 1020,42 1080,22 C1140,2 1200,42 1260,22 C1320,2 1380,42 1440,22" />
             </svg>
         </div>
@@ -185,13 +206,13 @@
         <!-- ============================= HOW TO ORDER ============================= -->
         <section class="how" id="how">
             <div class="wrap">
-                <div class="shop-head">
+                <div class="shop_head">
                     <span class="eyebrow">How To Order</span>
                     <h2>Three simple steps</h2>
                 </div>
-                <div class="how-steps">
+                <div class="how_steps">
                     <div class="step">
-                        <div class="step-num">1</div>
+                        <div class="step_num">1</div>
                         <h3>Choose your flowers</h3>
                         <p>
                             Browse the shop above and decide on a single stem, a bunch, or a
@@ -199,7 +220,7 @@
                         </p>
                     </div>
                     <div class="step">
-                        <div class="step-num">2</div>
+                        <div class="step_num">2</div>
                         <h3>Fill the order form</h3>
                         <p>
                             Add your name, contact number and delivery address in the form
@@ -207,7 +228,7 @@
                         </p>
                     </div>
                     <div class="step">
-                        <div class="step-num">3</div>
+                        <div class="step_num">3</div>
                         <h3>Confirm on WhatsApp</h3>
                         <p>
                             Your details open in WhatsApp automatically - just hit send, and
@@ -218,17 +239,17 @@
             </div>
         </section>
 
-        <div class="wire-divider" aria-hidden="true">
+        <div class="wire_divider" aria-hidden="true">
             <svg viewBox="0 0 1440 44" preserveAspectRatio="none">
-                <path class="wire-path" stroke="#7C9473"
+                <path class="wire_path" stroke="#7C9473"
                     d="M0,22 C 60,2 120,42 180,22 C240,2 300,42 360,22 C420,2 480,42 540,22 C600,2 660,42 720,22 C780,2 840,42 900,22 C960,2 1020,42 1080,22 C1140,2 1200,42 1260,22 C1320,2 1380,42 1440,22" />
             </svg>
         </div>
 
         <!-- ============================= ORDER FORM ============================= -->
         <section id="order">
-            <div class="wrap order-wrap">
-                <div class="order-info">
+            <div class="wrap order_wrap">
+                <div class="order_info">
                     <span class="eyebrow">Place An Order</span>
                     <h2>Tell us what you'd like</h2>
                     <p>
@@ -236,19 +257,19 @@
                         with your details already typed out - nothing is stored anywhere
                         online, it goes straight to us as a message.
                     </p>
-                    <div class="whatsapp-note">
+                    <div class="whatsapp_note">
                         <i class="fa-brands fa-whatsapp" style="color: green; font-weight: 700; font-size: large;"></i>
                         Prefer to skip the form? You can message us directly on WhatsApp
                         any time using the button in the
                         <a href="#contact"
-                            style="color: var(--coral-dark); font-weight: 800; text-decoration: none;">Contact</a>
+                            style="color: var(--coral_dark); font-weight: 800; text-decoration: none;">Contact</a>
                         section below.
                     </div>
 
                     <!-- Dynamic Seller Info Box -->
-                    <div class="seller-info-box">
+                    <div class="seller_info_box">
                         <h3><i class="fa-solid fa-store" style="color: var(--sun);"></i> Seller Details</h3>
-                        <ul class="seller-details-list">
+                        <ul class="seller_details_list">
                             <li>
                                 <i class="fa-solid fa-phone"></i>
                                 <span><strong>Phone:</strong> <span id="seller-phone"></span></span>
@@ -261,8 +282,8 @@
                     </div>
                 </div>
 
-                <form class="order-form" id="orderForm">
-                    <div class="field-row">
+                <form class="order_form" id="orderForm">
+                    <div class="field_row">
                         <div class="field">
                             <label for="fullName">Full Name *</label>
                             <input type="text" id="fullName" name="fullName" required placeholder="e.g. Priya Sharma" />
@@ -273,7 +294,7 @@
                         </div>
                     </div>
 
-                    <div class="field-row">
+                    <div class="field_row">
                         <div class="field">
                             <label for="phone">Phone Number *</label>
                             <input type="tel" id="phone" name="phone" required placeholder="10-digit number" />
@@ -300,10 +321,11 @@
                             <option value="bouquets">Bouquets</option>
                             <option value="keychain">Keychain</option>
                             <option value="clip">Clip</option>
+                            <option value="festive">Festive Specials</option>
                         </select>
                     </div>
 
-                    <div class="field-row">
+                    <div class="field_row">
                         <div class="field">
                             <label for="product">Which item / product? *</label>
                             <select id="product" name="product" required>
@@ -324,15 +346,15 @@
                         <textarea id="notes" name="notes" rows="3" placeholder="Optional"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" style="justify-self: start">
+                    <button type="submit" class="btn btn_primary" style="justify-self: start">
                         Send Order on WhatsApp
                     </button>
-                    <div class="form-msg information" id="formMsg">
+                    <div class="form_msg information" id="formMsg">
                         <span style="font-size: 17px;">&#10024;</span>
                         We also accept customized orders.
                         Message us on WhatsApp with your requirements to place your order.
                     </div>
-                    <div class="form-msg success" id="formMsgSuccess">
+                    <div class="form_msg success" id="formMsgSuccess">
                         Thanks! Opening WhatsApp with your order details, confirm and send your message there.
                         <i class="fa-solid fa-seedling"></i>
                     </div>
@@ -349,29 +371,29 @@
                     Reach out any time on WhatsApp or call directly - we're happy to
                     help you pick the perfect bouquet.
                 </p>
-                <div class="contact-buttons">
-                    <a href="#" id="waContactBtn" class="btn btn-primary">
+                <div class="contact_buttons">
+                    <a href="#" id="waContactBtn" class="btn btn_primary">
                         <i class="fa-brands fa-whatsapp"
                             style="color: darkgreen; font-weight: 900; font-size: 25px"></i>
-                        <span class="btn-text">Chat on WhatsApp</span>
+                        <span class="btn_text">Chat on WhatsApp</span>
                     </a>
-                    <a href="#" id="callBtn" class="btn btn-outline"><i class="fa-solid fa-phone"
+                    <a href="#" id="callBtn" class="btn btn_outline"><i class="fa-solid fa-phone"
                             style="font-size: 18px"></i>
-                        <span class="btn-text">Call Us</span></a>
-                    <a href="https://www.facebook.com/profile.php?id=61592627278956" class="btn btn-outline" target="_blank"
+                        <span class="btn_text">Call Us</span></a>
+                    <a href="https://www.facebook.com/profile.php?id=61592627278956" class="btn btn_outline" target="_blank"
                         rel="noopener">
                         <i class="fa-brands fa-facebook-f" style="color: rgb(4, 0, 255); font-size: 18px"></i>
-                        <span class="btn-text">Facebook</span>
+                        <span class="btn_text">Facebook</span>
                     </a>
-                    <a href="https://www.instagram.com/wistfulbloomshop?igsh=NGZ3ZnliYm9xcTk3&utm_source=ig_contact_invite" class="btn btn-outline" target="_blank"
+                    <a href="https://www.instagram.com/wistfulbloomshop?igsh=NGZ3ZnliYm9xcTk3&utm_source=ig_contact_invite" class="btn btn_outline" target="_blank"
                         rel="noopener">
                         <i class="fa-brands fa-instagram" style="font-size: 20px; color: #c429a2;"></i>
-                        <span class="btn-text">Instagram</span>
+                        <span class="btn_text">Instagram</span>
                     </a>
-                    <a href="https://www.threads.com/@wistfulbloomshop?invite=0" class="btn btn-outline" target="_blank"
+                    <a href="https://www.threads.com/@wistfulbloomshop?invite=0" class="btn btn_outline" target="_blank"
                         rel="noopener">
                         <i class="fa-brands fa-threads" style="font-size: 20px; color: #fff"></i>
-                        <span class="btn-text">Threads</span>
+                        <span class="btn_text">Threads</span>
                     </a>
                 </div>
             </div>
@@ -387,23 +409,23 @@
     </footer>
 
     <!-- ============================= AMAZON-STYLE PRODUCT MODAL ============================= -->
-    <div id="productModal" class="modal-overlay" aria-hidden="true">
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose" aria-label="Close Window">&times;</button>
-            <div class="modal-body">
-                <div class="modal-gallery">
-                    <div class="modal-thumbnails" id="modalThumbnails"></div>
-                    <div class="modal-main-image-wrap">
-                        <button class="modal-nav-btn prev" id="modalPrev" aria-label="Previous Image">&#10094;</button>
+    <div id="productModal" class="modal_overlay" aria-hidden="true">
+        <div class="modal_content">
+            <button class="modal_close" id="modalClose" aria-label="Close Window">&times;</button>
+            <div class="modal_body">
+                <div class="modal_gallery">
+                    <div class="modal_thumbnails" id="modalThumbnails"></div>
+                    <div class="modal_main_image_wrap">
+                        <button class="modal_nav_btn prev" id="modalPrev" aria-label="Previous Image">&#10094;</button>
                         <img id="modalMainImg" src="" alt="Product View" />
-                        <button class="modal-nav-btn next" id="modalNext" aria-label="Next Image">&#10095;</button>
+                        <button class="modal_nav_btn next" id="modalNext" aria-label="Next Image">&#10095;</button>
                     </div>
                 </div>
-                <div class="modal-details">
+                <div class="modal_details">
                     <h2 id="modalTitle"></h2>
-                    <div class="modal-price" id="modalPrice"></div>
+                    <div class="modal_price" id="modalPrice"></div>
                     <p id="modalDesc"></p>
-                    <a class="btn btn-dark" id="modalWaBtn" href="#" style="margin-top: 15px; width: 100%; justify-content: center;">Order on WhatsApp</a>
+                    <a class="btn btn_dark" id="modalWaBtn" href="#" style="margin-top: 15px; width: 100%; justify-content: center;">Order on WhatsApp</a>
                 </div>
             </div>
         </div>
