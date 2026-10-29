@@ -205,6 +205,16 @@ const PRODUCTS = [
         img: "images/bouquets/normal2.jpeg",
         images: ["images/bouquets/normal2.jpeg"],
         desc: "For normal season.",
+    },
+    {
+        id: "normal3",
+        category: "bouquets",
+        name: "Normal Bouquet",
+        price: 259,
+        emoji: "💐",
+        img: "images/bouquets/normal3.jpeg",
+        images: ["images/bouquets/normal3.jpeg"],
+        desc: "For normal season.",
     }
 ];
 
