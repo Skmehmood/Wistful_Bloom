@@ -118,6 +118,7 @@ section {
 
 .eyebrow {
     display: inline-block;
+    gap: 6px;
     font-family: "Nunito", sans-serif;
     font-weight: 800;
     letter-spacing: 0.14em;
@@ -125,7 +126,7 @@ section {
     font-size: 0.78rem;
     color: var(--coral_dark);
     background: linear-gradient(135deg, rgba(255, 119, 168, 0.2), rgba(255, 200, 87, 0.2));
-    padding: 6px 16px;
+    padding: 5px 14px;
     border-radius: 999px;
     margin-bottom: 16px;
     border: 1px solid rgba(255, 119, 168, 0.3);
